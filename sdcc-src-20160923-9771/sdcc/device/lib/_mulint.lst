@@ -1,0 +1,190 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.6.3 #9771 (MSVC)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module _mulint
+                                      6 	.optsdcc -mmcs51 --model-large --xstack
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl __mulint_PARM_2
+                                     12 	.globl __mulint
+                                     13 ;--------------------------------------------------------
+                                     14 ; special function registers
+                                     15 ;--------------------------------------------------------
+                                     16 	.area RSEG    (ABS,DATA)
+      000000                         17 	.org 0x0000
+                                     18 ;--------------------------------------------------------
+                                     19 ; special function bits
+                                     20 ;--------------------------------------------------------
+                                     21 	.area RSEG    (ABS,DATA)
+      000000                         22 	.org 0x0000
+                                     23 ;--------------------------------------------------------
+                                     24 ; overlayable register banks
+                                     25 ;--------------------------------------------------------
+                                     26 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         27 	.ds 8
+                                     28 ;--------------------------------------------------------
+                                     29 ; internal ram data
+                                     30 ;--------------------------------------------------------
+                                     31 	.area DSEG    (DATA)
+                                     32 ;--------------------------------------------------------
+                                     33 ; overlayable items in internal ram 
+                                     34 ;--------------------------------------------------------
+                                     35 ;--------------------------------------------------------
+                                     36 ; indirectly addressable internal ram data
+                                     37 ;--------------------------------------------------------
+                                     38 	.area ISEG    (DATA)
+                                     39 ;--------------------------------------------------------
+                                     40 ; absolute internal ram data
+                                     41 ;--------------------------------------------------------
+                                     42 	.area IABS    (ABS,DATA)
+                                     43 	.area IABS    (ABS,DATA)
+                                     44 ;--------------------------------------------------------
+                                     45 ; bit data
+                                     46 ;--------------------------------------------------------
+                                     47 	.area BSEG    (BIT)
+                                     48 ;--------------------------------------------------------
+                                     49 ; paged external ram data
+                                     50 ;--------------------------------------------------------
+                                     51 	.area PSEG    (PAG,XDATA)
+                                     52 ;--------------------------------------------------------
+                                     53 ; external ram data
+                                     54 ;--------------------------------------------------------
+                                     55 	.area XSEG    (XDATA)
+      000000                         56 __mulint_PARM_2:
+      000000                         57 	.ds 2
+      000002                         58 __mulint_a_1_1:
+      000002                         59 	.ds 2
+      000004                         60 __mulint_t_1_2:
+      000004                         61 	.ds 2
+                                     62 ;--------------------------------------------------------
+                                     63 ; absolute external ram data
+                                     64 ;--------------------------------------------------------
+                                     65 	.area XABS    (ABS,XDATA)
+                                     66 ;--------------------------------------------------------
+                                     67 ; external initialized ram data
+                                     68 ;--------------------------------------------------------
+                                     69 	.area XISEG   (XDATA)
+                                     70 	.area HOME    (CODE)
+                                     71 	.area GSINIT0 (CODE)
+                                     72 	.area GSINIT1 (CODE)
+                                     73 	.area GSINIT2 (CODE)
+                                     74 	.area GSINIT3 (CODE)
+                                     75 	.area GSINIT4 (CODE)
+                                     76 	.area GSINIT5 (CODE)
+                                     77 	.area GSINIT  (CODE)
+                                     78 	.area GSFINAL (CODE)
+                                     79 	.area CSEG    (CODE)
+                                     80 ;--------------------------------------------------------
+                                     81 ; global & static initialisations
+                                     82 ;--------------------------------------------------------
+                                     83 	.area HOME    (CODE)
+                                     84 	.area GSINIT  (CODE)
+                                     85 	.area GSFINAL (CODE)
+                                     86 	.area GSINIT  (CODE)
+                                     87 ;--------------------------------------------------------
+                                     88 ; Home
+                                     89 ;--------------------------------------------------------
+                                     90 	.area HOME    (CODE)
+                                     91 	.area HOME    (CODE)
+                                     92 ;--------------------------------------------------------
+                                     93 ; code
+                                     94 ;--------------------------------------------------------
+                                     95 	.area CSEG    (CODE)
+                                     96 ;------------------------------------------------------------
+                                     97 ;Allocation info for local variables in function '_mulint'
+                                     98 ;------------------------------------------------------------
+                                     99 ;b                         Allocated with name '__mulint_PARM_2'
+                                    100 ;a                         Allocated with name '__mulint_a_1_1'
+                                    101 ;x                         Allocated with name '__mulint_x_1_2'
+                                    102 ;y                         Allocated with name '__mulint_y_1_2'
+                                    103 ;t                         Allocated with name '__mulint_t_1_2'
+                                    104 ;------------------------------------------------------------
+                                    105 ;	_mulint.c:226: _mulint (int a, int b)
+                                    106 ;	-----------------------------------------
+                                    107 ;	 function _mulint
+                                    108 ;	-----------------------------------------
+      000000                        109 __mulint:
+                           000007   110 	ar7 = 0x07
+                           000006   111 	ar6 = 0x06
+                           000005   112 	ar5 = 0x05
+                           000004   113 	ar4 = 0x04
+                           000003   114 	ar3 = 0x03
+                           000002   115 	ar2 = 0x02
+                           000001   116 	ar1 = 0x01
+                           000000   117 	ar0 = 0x00
+      000000 AF 83            [24]  118 	mov	r7,dph
+      000002 E5 82            [12]  119 	mov	a,dpl
+      000004 90r00r02         [24]  120 	mov	dptr,#__mulint_a_1_1
+      000007 F0               [24]  121 	movx	@dptr,a
+      000008 EF               [12]  122 	mov	a,r7
+      000009 A3               [24]  123 	inc	dptr
+      00000A F0               [24]  124 	movx	@dptr,a
+                                    125 ;	_mulint.c:232: x = (union uu __xdata *)&a;
+                                    126 ;	_mulint.c:233: y = (union uu __xdata *)&b;
+                                    127 ;	_mulint.c:243: t.t = (unsigned char)a * (unsigned char)b;
+      00000B 90r00r02         [24]  128 	mov	dptr,#__mulint_a_1_1
+      00000E E0               [24]  129 	movx	a,@dptr
+      00000F FE               [12]  130 	mov	r6,a
+      000010 A3               [24]  131 	inc	dptr
+      000011 E0               [24]  132 	movx	a,@dptr
+      000012 90r00r00         [24]  133 	mov	dptr,#__mulint_PARM_2
+      000015 E0               [24]  134 	movx	a,@dptr
+      000016 FD               [12]  135 	mov	r5,a
+      000017 A3               [24]  136 	inc	dptr
+      000018 E0               [24]  137 	movx	a,@dptr
+      000019 8E F0            [24]  138 	mov	b,r6
+      00001B ED               [12]  139 	mov	a,r5
+      00001C A4               [48]  140 	mul	ab
+      00001D FE               [12]  141 	mov	r6,a
+      00001E AF F0            [24]  142 	mov	r7,b
+      000020 90r00r04         [24]  143 	mov	dptr,#__mulint_t_1_2
+      000023 EE               [12]  144 	mov	a,r6
+      000024 F0               [24]  145 	movx	@dptr,a
+      000025 EF               [12]  146 	mov	a,r7
+      000026 A3               [24]  147 	inc	dptr
+      000027 F0               [24]  148 	movx	@dptr,a
+                                    149 ;	_mulint.c:244: t.s.hi += ((unsigned char)a * y->s.hi) + (x->s.hi * (unsigned char)b);
+      000028 90r00r05         [24]  150 	mov	dptr,#(__mulint_t_1_2 + 0x0001)
+      00002B E0               [24]  151 	movx	a,@dptr
+      00002C FF               [12]  152 	mov	r7,a
+      00002D 90r00r02         [24]  153 	mov	dptr,#__mulint_a_1_1
+      000030 E0               [24]  154 	movx	a,@dptr
+      000031 FD               [12]  155 	mov	r5,a
+      000032 A3               [24]  156 	inc	dptr
+      000033 E0               [24]  157 	movx	a,@dptr
+      000034 90r00r01         [24]  158 	mov	dptr,#(__mulint_PARM_2 + 0x0001)
+      000037 E0               [24]  159 	movx	a,@dptr
+      000038 8D F0            [24]  160 	mov	b,r5
+      00003A A4               [48]  161 	mul	ab
+      00003B FD               [12]  162 	mov	r5,a
+      00003C 90r00r03         [24]  163 	mov	dptr,#(__mulint_a_1_1 + 0x0001)
+      00003F E0               [24]  164 	movx	a,@dptr
+      000040 FE               [12]  165 	mov	r6,a
+      000041 90r00r00         [24]  166 	mov	dptr,#__mulint_PARM_2
+      000044 E0               [24]  167 	movx	a,@dptr
+      000045 FB               [12]  168 	mov	r3,a
+      000046 A3               [24]  169 	inc	dptr
+      000047 E0               [24]  170 	movx	a,@dptr
+      000048 8E F0            [24]  171 	mov	b,r6
+      00004A EB               [12]  172 	mov	a,r3
+      00004B A4               [48]  173 	mul	ab
+      00004C 2D               [12]  174 	add	a,r5
+      00004D 2F               [12]  175 	add	a,r7
+      00004E 90r00r05         [24]  176 	mov	dptr,#(__mulint_t_1_2 + 0x0001)
+      000051 F0               [24]  177 	movx	@dptr,a
+                                    178 ;	_mulint.c:246: return t.t;
+      000052 90r00r04         [24]  179 	mov	dptr,#__mulint_t_1_2
+      000055 E0               [24]  180 	movx	a,@dptr
+      000056 FE               [12]  181 	mov	r6,a
+      000057 A3               [24]  182 	inc	dptr
+      000058 E0               [24]  183 	movx	a,@dptr
+      000059 8E 82            [24]  184 	mov	dpl,r6
+      00005B F5 83            [12]  185 	mov	dph,a
+      00005D 22               [24]  186 	ret
+                                    187 	.area CSEG    (CODE)
+                                    188 	.area CONST   (CODE)
+                                    189 	.area XINIT   (CODE)
+                                    190 	.area CABS    (ABS,CODE)

@@ -1,0 +1,12 @@
+﻿  symtab.c
+  simi.c
+  sdcdb.c
+  SDCCset.c
+  SDCChasht.c
+  SDCCerr.c
+  NewAlloc.c
+  cmd.c
+  break.c
+  Generating Code...
+break.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  sdcdb.vcxproj -> C:\temp\sdcc-src-20160923-9771\sdcc\debugger\mcs51\..\..\bin_vc\sdcdb.exe

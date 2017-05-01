@@ -1,0 +1,397 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.6.3 #9771 (MSVC)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module free
+                                      6 	.optsdcc -mmcs51 --model-large --xstack
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _aligned_alloc_PARM_2
+                                     12 	.globl _free
+                                     13 ;--------------------------------------------------------
+                                     14 ; special function registers
+                                     15 ;--------------------------------------------------------
+                                     16 	.area RSEG    (ABS,DATA)
+      000000                         17 	.org 0x0000
+                                     18 ;--------------------------------------------------------
+                                     19 ; special function bits
+                                     20 ;--------------------------------------------------------
+                                     21 	.area RSEG    (ABS,DATA)
+      000000                         22 	.org 0x0000
+                                     23 ;--------------------------------------------------------
+                                     24 ; overlayable register banks
+                                     25 ;--------------------------------------------------------
+                                     26 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         27 	.ds 8
+                                     28 ;--------------------------------------------------------
+                                     29 ; internal ram data
+                                     30 ;--------------------------------------------------------
+                                     31 	.area DSEG    (DATA)
+                                     32 ;--------------------------------------------------------
+                                     33 ; overlayable items in internal ram 
+                                     34 ;--------------------------------------------------------
+                                     35 ;--------------------------------------------------------
+                                     36 ; indirectly addressable internal ram data
+                                     37 ;--------------------------------------------------------
+                                     38 	.area ISEG    (DATA)
+                                     39 ;--------------------------------------------------------
+                                     40 ; absolute internal ram data
+                                     41 ;--------------------------------------------------------
+                                     42 	.area IABS    (ABS,DATA)
+                                     43 	.area IABS    (ABS,DATA)
+                                     44 ;--------------------------------------------------------
+                                     45 ; bit data
+                                     46 ;--------------------------------------------------------
+                                     47 	.area BSEG    (BIT)
+                                     48 ;--------------------------------------------------------
+                                     49 ; paged external ram data
+                                     50 ;--------------------------------------------------------
+                                     51 	.area PSEG    (PAG,XDATA)
+                                     52 ;--------------------------------------------------------
+                                     53 ; external ram data
+                                     54 ;--------------------------------------------------------
+                                     55 	.area XSEG    (XDATA)
+      000000                         56 _aligned_alloc_PARM_2:
+      000000                         57 	.ds 2
+      000002                         58 _free_ptr_1_21:
+      000002                         59 	.ds 3
+      000005                         60 _free_h_1_22:
+      000005                         61 	.ds 2
+      000007                         62 _free_prev_free_1_22:
+      000007                         63 	.ds 2
+      000009                         64 _free_f_1_22:
+      000009                         65 	.ds 2
+                                     66 ;--------------------------------------------------------
+                                     67 ; absolute external ram data
+                                     68 ;--------------------------------------------------------
+                                     69 	.area XABS    (ABS,XDATA)
+                                     70 ;--------------------------------------------------------
+                                     71 ; external initialized ram data
+                                     72 ;--------------------------------------------------------
+                                     73 	.area XISEG   (XDATA)
+                                     74 	.area HOME    (CODE)
+                                     75 	.area GSINIT0 (CODE)
+                                     76 	.area GSINIT1 (CODE)
+                                     77 	.area GSINIT2 (CODE)
+                                     78 	.area GSINIT3 (CODE)
+                                     79 	.area GSINIT4 (CODE)
+                                     80 	.area GSINIT5 (CODE)
+                                     81 	.area GSINIT  (CODE)
+                                     82 	.area GSFINAL (CODE)
+                                     83 	.area CSEG    (CODE)
+                                     84 ;--------------------------------------------------------
+                                     85 ; global & static initialisations
+                                     86 ;--------------------------------------------------------
+                                     87 	.area HOME    (CODE)
+                                     88 	.area GSINIT  (CODE)
+                                     89 	.area GSFINAL (CODE)
+                                     90 	.area GSINIT  (CODE)
+                                     91 ;--------------------------------------------------------
+                                     92 ; Home
+                                     93 ;--------------------------------------------------------
+                                     94 	.area HOME    (CODE)
+                                     95 	.area HOME    (CODE)
+                                     96 ;--------------------------------------------------------
+                                     97 ; code
+                                     98 ;--------------------------------------------------------
+                                     99 	.area CSEG    (CODE)
+                                    100 ;------------------------------------------------------------
+                                    101 ;Allocation info for local variables in function 'free'
+                                    102 ;------------------------------------------------------------
+                                    103 ;ptr                       Allocated with name '_free_ptr_1_21'
+                                    104 ;h                         Allocated with name '_free_h_1_22'
+                                    105 ;next_free                 Allocated with name '_free_next_free_1_22'
+                                    106 ;prev_free                 Allocated with name '_free_prev_free_1_22'
+                                    107 ;f                         Allocated with name '_free_f_1_22'
+                                    108 ;------------------------------------------------------------
+                                    109 ;	free.c:48: void free(void *ptr)
+                                    110 ;	-----------------------------------------
+                                    111 ;	 function free
+                                    112 ;	-----------------------------------------
+      000000                        113 _free:
+                           000007   114 	ar7 = 0x07
+                           000006   115 	ar6 = 0x06
+                           000005   116 	ar5 = 0x05
+                           000004   117 	ar4 = 0x04
+                           000003   118 	ar3 = 0x03
+                           000002   119 	ar2 = 0x02
+                           000001   120 	ar1 = 0x01
+                           000000   121 	ar0 = 0x00
+      000000 AF F0            [24]  122 	mov	r7,b
+      000002 AE 83            [24]  123 	mov	r6,dph
+      000004 E5 82            [12]  124 	mov	a,dpl
+      000006 90r00r02         [24]  125 	mov	dptr,#_free_ptr_1_21
+      000009 F0               [24]  126 	movx	@dptr,a
+      00000A EE               [12]  127 	mov	a,r6
+      00000B A3               [24]  128 	inc	dptr
+      00000C F0               [24]  129 	movx	@dptr,a
+      00000D EF               [12]  130 	mov	a,r7
+      00000E A3               [24]  131 	inc	dptr
+      00000F F0               [24]  132 	movx	@dptr,a
+                                    133 ;	free.c:53: if(!ptr)
+      000010 90r00r02         [24]  134 	mov	dptr,#_free_ptr_1_21
+      000013 E0               [24]  135 	movx	a,@dptr
+      000014 FD               [12]  136 	mov	r5,a
+      000015 A3               [24]  137 	inc	dptr
+      000016 E0               [24]  138 	movx	a,@dptr
+      000017 FE               [12]  139 	mov	r6,a
+      000018 A3               [24]  140 	inc	dptr
+      000019 E0               [24]  141 	movx	a,@dptr
+      00001A FF               [12]  142 	mov	r7,a
+      00001B 90r00r02         [24]  143 	mov	dptr,#_free_ptr_1_21
+      00001E E0               [24]  144 	movx	a,@dptr
+      00001F F5 F0            [12]  145 	mov	b,a
+      000021 A3               [24]  146 	inc	dptr
+      000022 E0               [24]  147 	movx	a,@dptr
+      000023 45 F0            [12]  148 	orl	a,b
+      000025 70 01            [24]  149 	jnz	00102$
+                                    150 ;	free.c:54: return;
+      000027 22               [24]  151 	ret
+      000028                        152 00102$:
+                                    153 ;	free.c:56: prev_free = 0;
+      000028 90r00r07         [24]  154 	mov	dptr,#_free_prev_free_1_22
+      00002B E4               [12]  155 	clr	a
+      00002C F0               [24]  156 	movx	@dptr,a
+      00002D A3               [24]  157 	inc	dptr
+      00002E F0               [24]  158 	movx	@dptr,a
+                                    159 ;	free.c:57: for(h = __sdcc_heap_free, f = &__sdcc_heap_free; h && h < ptr; prev_free = h, f = &(h->next_free), h = h->next_free); // Find adjacent blocks in free list
+      00002F 90r00r00         [24]  160 	mov	dptr,#___sdcc_heap_free
+      000032 E0               [24]  161 	movx	a,@dptr
+      000033 FB               [12]  162 	mov	r3,a
+      000034 A3               [24]  163 	inc	dptr
+      000035 E0               [24]  164 	movx	a,@dptr
+      000036 FC               [12]  165 	mov	r4,a
+      000037 90r00r05         [24]  166 	mov	dptr,#_free_h_1_22
+      00003A EB               [12]  167 	mov	a,r3
+      00003B F0               [24]  168 	movx	@dptr,a
+      00003C EC               [12]  169 	mov	a,r4
+      00003D A3               [24]  170 	inc	dptr
+      00003E F0               [24]  171 	movx	@dptr,a
+      00003F 90r00r09         [24]  172 	mov	dptr,#_free_f_1_22
+      000042 74r00            [12]  173 	mov	a,#___sdcc_heap_free
+      000044 F0               [24]  174 	movx	@dptr,a
+      000045 74s00            [12]  175 	mov	a,#(___sdcc_heap_free >> 8)
+      000047 A3               [24]  176 	inc	dptr
+      000048 F0               [24]  177 	movx	@dptr,a
+      000049                        178 00111$:
+      000049 90r00r05         [24]  179 	mov	dptr,#_free_h_1_22
+      00004C E0               [24]  180 	movx	a,@dptr
+      00004D FB               [12]  181 	mov	r3,a
+      00004E A3               [24]  182 	inc	dptr
+      00004F E0               [24]  183 	movx	a,@dptr
+      000050 FC               [12]  184 	mov	r4,a
+      000051 4B               [12]  185 	orl	a,r3
+      000052 60 41            [24]  186 	jz	00103$
+      000054 8B 01            [24]  187 	mov	ar1,r3
+      000056 8C 02            [24]  188 	mov	ar2,r4
+      000058 C0 03            [24]  189 	push	ar3
+      00005A C0 04            [24]  190 	push	ar4
+      00005C 8D 00            [24]  191 	mov	ar0,r5
+      00005E 8E 04            [24]  192 	mov	ar4,r6
+      000060 C3               [12]  193 	clr	c
+      000061 E9               [12]  194 	mov	a,r1
+      000062 98               [12]  195 	subb	a,r0
+      000063 EA               [12]  196 	mov	a,r2
+      000064 9C               [12]  197 	subb	a,r4
+      000065 D0 04            [24]  198 	pop	ar4
+      000067 D0 03            [24]  199 	pop	ar3
+      000069 50 2A            [24]  200 	jnc	00103$
+      00006B 90r00r07         [24]  201 	mov	dptr,#_free_prev_free_1_22
+      00006E EB               [12]  202 	mov	a,r3
+      00006F F0               [24]  203 	movx	@dptr,a
+      000070 EC               [12]  204 	mov	a,r4
+      000071 A3               [24]  205 	inc	dptr
+      000072 F0               [24]  206 	movx	@dptr,a
+      000073 74 02            [12]  207 	mov	a,#0x02
+      000075 2B               [12]  208 	add	a,r3
+      000076 FB               [12]  209 	mov	r3,a
+      000077 E4               [12]  210 	clr	a
+      000078 3C               [12]  211 	addc	a,r4
+      000079 FC               [12]  212 	mov	r4,a
+      00007A 90r00r09         [24]  213 	mov	dptr,#_free_f_1_22
+      00007D EB               [12]  214 	mov	a,r3
+      00007E F0               [24]  215 	movx	@dptr,a
+      00007F EC               [12]  216 	mov	a,r4
+      000080 A3               [24]  217 	inc	dptr
+      000081 F0               [24]  218 	movx	@dptr,a
+      000082 8B 82            [24]  219 	mov	dpl,r3
+      000084 8C 83            [24]  220 	mov	dph,r4
+      000086 E0               [24]  221 	movx	a,@dptr
+      000087 FB               [12]  222 	mov	r3,a
+      000088 A3               [24]  223 	inc	dptr
+      000089 E0               [24]  224 	movx	a,@dptr
+      00008A FC               [12]  225 	mov	r4,a
+      00008B 90r00r05         [24]  226 	mov	dptr,#_free_h_1_22
+      00008E EB               [12]  227 	mov	a,r3
+      00008F F0               [24]  228 	movx	@dptr,a
+      000090 EC               [12]  229 	mov	a,r4
+      000091 A3               [24]  230 	inc	dptr
+      000092 F0               [24]  231 	movx	@dptr,a
+      000093 80 B4            [24]  232 	sjmp	00111$
+      000095                        233 00103$:
+                                    234 ;	free.c:58: next_free = h;
+      000095 90r00r05         [24]  235 	mov	dptr,#_free_h_1_22
+      000098 E0               [24]  236 	movx	a,@dptr
+      000099 FE               [12]  237 	mov	r6,a
+      00009A A3               [24]  238 	inc	dptr
+      00009B E0               [24]  239 	movx	a,@dptr
+      00009C FF               [12]  240 	mov	r7,a
+                                    241 ;	free.c:60: h = (void XDATA *)((char XDATA *)(ptr) - offsetof(struct header, next_free));
+      00009D 90r00r02         [24]  242 	mov	dptr,#_free_ptr_1_21
+      0000A0 E0               [24]  243 	movx	a,@dptr
+      0000A1 FB               [12]  244 	mov	r3,a
+      0000A2 A3               [24]  245 	inc	dptr
+      0000A3 E0               [24]  246 	movx	a,@dptr
+      0000A4 FC               [12]  247 	mov	r4,a
+      0000A5 A3               [24]  248 	inc	dptr
+      0000A6 E0               [24]  249 	movx	a,@dptr
+      0000A7 EB               [12]  250 	mov	a,r3
+      0000A8 24 FE            [12]  251 	add	a,#0xfe
+      0000AA FB               [12]  252 	mov	r3,a
+      0000AB EC               [12]  253 	mov	a,r4
+      0000AC 34 FF            [12]  254 	addc	a,#0xff
+      0000AE FC               [12]  255 	mov	r4,a
+                                    256 ;	free.c:63: h->next_free = next_free;
+      0000AF 74 02            [12]  257 	mov	a,#0x02
+      0000B1 2B               [12]  258 	add	a,r3
+      0000B2 FA               [12]  259 	mov	r2,a
+      0000B3 E4               [12]  260 	clr	a
+      0000B4 3C               [12]  261 	addc	a,r4
+      0000B5 FD               [12]  262 	mov	r5,a
+      0000B6 8A 82            [24]  263 	mov	dpl,r2
+      0000B8 8D 83            [24]  264 	mov	dph,r5
+      0000BA EE               [12]  265 	mov	a,r6
+      0000BB F0               [24]  266 	movx	@dptr,a
+      0000BC EF               [12]  267 	mov	a,r7
+      0000BD A3               [24]  268 	inc	dptr
+      0000BE F0               [24]  269 	movx	@dptr,a
+                                    270 ;	free.c:64: *f = h;
+      0000BF 90r00r09         [24]  271 	mov	dptr,#_free_f_1_22
+      0000C2 E0               [24]  272 	movx	a,@dptr
+      0000C3 F8               [12]  273 	mov	r0,a
+      0000C4 A3               [24]  274 	inc	dptr
+      0000C5 E0               [24]  275 	movx	a,@dptr
+      0000C6 F9               [12]  276 	mov	r1,a
+      0000C7 88 82            [24]  277 	mov	dpl,r0
+      0000C9 89 83            [24]  278 	mov	dph,r1
+      0000CB EB               [12]  279 	mov	a,r3
+      0000CC F0               [24]  280 	movx	@dptr,a
+      0000CD EC               [12]  281 	mov	a,r4
+      0000CE A3               [24]  282 	inc	dptr
+      0000CF F0               [24]  283 	movx	@dptr,a
+                                    284 ;	free.c:66: if(next_free == h->next) // Merge with next block
+      0000D0 8B 82            [24]  285 	mov	dpl,r3
+      0000D2 8C 83            [24]  286 	mov	dph,r4
+      0000D4 E0               [24]  287 	movx	a,@dptr
+      0000D5 F8               [12]  288 	mov	r0,a
+      0000D6 A3               [24]  289 	inc	dptr
+      0000D7 E0               [24]  290 	movx	a,@dptr
+      0000D8 F9               [12]  291 	mov	r1,a
+      0000D9 EE               [12]  292 	mov	a,r6
+      0000DA B5 00 33         [24]  293 	cjne	a,ar0,00105$
+      0000DD EF               [12]  294 	mov	a,r7
+      0000DE B5 01 2F         [24]  295 	cjne	a,ar1,00105$
+                                    296 ;	free.c:68: h->next_free = h->next->next_free;
+      0000E1 88 82            [24]  297 	mov	dpl,r0
+      0000E3 89 83            [24]  298 	mov	dph,r1
+      0000E5 A3               [24]  299 	inc	dptr
+      0000E6 A3               [24]  300 	inc	dptr
+      0000E7 E0               [24]  301 	movx	a,@dptr
+      0000E8 FE               [12]  302 	mov	r6,a
+      0000E9 A3               [24]  303 	inc	dptr
+      0000EA E0               [24]  304 	movx	a,@dptr
+      0000EB FF               [12]  305 	mov	r7,a
+      0000EC 8A 82            [24]  306 	mov	dpl,r2
+      0000EE 8D 83            [24]  307 	mov	dph,r5
+      0000F0 EE               [12]  308 	mov	a,r6
+      0000F1 F0               [24]  309 	movx	@dptr,a
+      0000F2 EF               [12]  310 	mov	a,r7
+      0000F3 A3               [24]  311 	inc	dptr
+      0000F4 F0               [24]  312 	movx	@dptr,a
+                                    313 ;	free.c:69: h->next = h->next->next;
+      0000F5 8B 82            [24]  314 	mov	dpl,r3
+      0000F7 8C 83            [24]  315 	mov	dph,r4
+      0000F9 E0               [24]  316 	movx	a,@dptr
+      0000FA FE               [12]  317 	mov	r6,a
+      0000FB A3               [24]  318 	inc	dptr
+      0000FC E0               [24]  319 	movx	a,@dptr
+      0000FD FF               [12]  320 	mov	r7,a
+      0000FE 8E 82            [24]  321 	mov	dpl,r6
+      000100 8F 83            [24]  322 	mov	dph,r7
+      000102 E0               [24]  323 	movx	a,@dptr
+      000103 FE               [12]  324 	mov	r6,a
+      000104 A3               [24]  325 	inc	dptr
+      000105 E0               [24]  326 	movx	a,@dptr
+      000106 FF               [12]  327 	mov	r7,a
+      000107 8B 82            [24]  328 	mov	dpl,r3
+      000109 8C 83            [24]  329 	mov	dph,r4
+      00010B EE               [12]  330 	mov	a,r6
+      00010C F0               [24]  331 	movx	@dptr,a
+      00010D EF               [12]  332 	mov	a,r7
+      00010E A3               [24]  333 	inc	dptr
+      00010F F0               [24]  334 	movx	@dptr,a
+      000110                        335 00105$:
+                                    336 ;	free.c:72: if (prev_free && prev_free->next == h) // Merge with previous block
+      000110 90r00r07         [24]  337 	mov	dptr,#_free_prev_free_1_22
+      000113 E0               [24]  338 	movx	a,@dptr
+      000114 FE               [12]  339 	mov	r6,a
+      000115 A3               [24]  340 	inc	dptr
+      000116 E0               [24]  341 	movx	a,@dptr
+      000117 FF               [12]  342 	mov	r7,a
+      000118 4E               [12]  343 	orl	a,r6
+      000119 60 3C            [24]  344 	jz	00113$
+      00011B 8E 82            [24]  345 	mov	dpl,r6
+      00011D 8F 83            [24]  346 	mov	dph,r7
+      00011F E0               [24]  347 	movx	a,@dptr
+      000120 F8               [12]  348 	mov	r0,a
+      000121 A3               [24]  349 	inc	dptr
+      000122 E0               [24]  350 	movx	a,@dptr
+      000123 F9               [12]  351 	mov	r1,a
+      000124 E8               [12]  352 	mov	a,r0
+      000125 B5 03 2F         [24]  353 	cjne	a,ar3,00113$
+      000128 E9               [12]  354 	mov	a,r1
+      000129 B5 04 2B         [24]  355 	cjne	a,ar4,00113$
+                                    356 ;	free.c:74: prev_free->next = h->next;
+      00012C 8B 82            [24]  357 	mov	dpl,r3
+      00012E 8C 83            [24]  358 	mov	dph,r4
+      000130 E0               [24]  359 	movx	a,@dptr
+      000131 FB               [12]  360 	mov	r3,a
+      000132 A3               [24]  361 	inc	dptr
+      000133 E0               [24]  362 	movx	a,@dptr
+      000134 FC               [12]  363 	mov	r4,a
+      000135 8E 82            [24]  364 	mov	dpl,r6
+      000137 8F 83            [24]  365 	mov	dph,r7
+      000139 EB               [12]  366 	mov	a,r3
+      00013A F0               [24]  367 	movx	@dptr,a
+      00013B EC               [12]  368 	mov	a,r4
+      00013C A3               [24]  369 	inc	dptr
+      00013D F0               [24]  370 	movx	@dptr,a
+                                    371 ;	free.c:75: prev_free->next_free = h->next_free;
+      00013E 74 02            [12]  372 	mov	a,#0x02
+      000140 2E               [12]  373 	add	a,r6
+      000141 FE               [12]  374 	mov	r6,a
+      000142 E4               [12]  375 	clr	a
+      000143 3F               [12]  376 	addc	a,r7
+      000144 FF               [12]  377 	mov	r7,a
+      000145 8A 82            [24]  378 	mov	dpl,r2
+      000147 8D 83            [24]  379 	mov	dph,r5
+      000149 E0               [24]  380 	movx	a,@dptr
+      00014A FA               [12]  381 	mov	r2,a
+      00014B A3               [24]  382 	inc	dptr
+      00014C E0               [24]  383 	movx	a,@dptr
+      00014D FD               [12]  384 	mov	r5,a
+      00014E 8E 82            [24]  385 	mov	dpl,r6
+      000150 8F 83            [24]  386 	mov	dph,r7
+      000152 EA               [12]  387 	mov	a,r2
+      000153 F0               [24]  388 	movx	@dptr,a
+      000154 ED               [12]  389 	mov	a,r5
+      000155 A3               [24]  390 	inc	dptr
+      000156 F0               [24]  391 	movx	@dptr,a
+      000157                        392 00113$:
+      000157 22               [24]  393 	ret
+                                    394 	.area CSEG    (CODE)
+                                    395 	.area CONST   (CODE)
+                                    396 	.area XINIT   (CODE)
+                                    397 	.area CABS    (ABS,CODE)

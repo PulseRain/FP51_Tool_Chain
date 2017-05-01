@@ -1,0 +1,52 @@
+﻿  Generating: auto-host.h
+  Generating: options.c and options.h
+  alloca.c
+  concat.c
+  fopen_unlocked.c
+  getpwd.c
+  hashtab.c
+  hex.c
+  lbasename.c
+  md5.c
+  obstack.c
+  safe-ctype.c
+  vasprintf.c
+  xexit.c
+  xmalloc.c
+  xmemdup.c
+  xstrdup.c
+  xstrerror.c
+  c-incpath.c
+  c-ppoutput.c
+  cppdefault.c
+  options.c
+  Generating Code...
+  Compiling...
+  opts-common.c
+  opts.c
+  prefix.c
+  sdcpp-diagnostic.c
+  sdcpp-opts.c
+  sdcpp.c
+  version.c
+  charset.c
+  directives.c
+  errors.c
+  expr.c
+  files.c
+  identifiers.c
+  init.c
+  lex.c
+libcpp\lex.c(244): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+  line-map.c
+  macro.c
+  mkdeps.c
+  symtab.c
+  traditional.c
+  Generating Code...
+  Compiling...
+  dirent.c
+win32\dirent.c(212): warning C4267: '=': conversion from 'size_t' to 'unsigned short', possible loss of data
+  Generating Code...
+  sdcpp.vcxproj -> C:\arc\Arduino_IDE\sdcc-src-20160923-9771\sdcc\support\cpp\..\..\bin_vc\sdcpp.exe
+  sdcpp.vcxproj -> .\Release/sdcpp.pdb (Full PDB)

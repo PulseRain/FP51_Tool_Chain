@@ -1,0 +1,524 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.6.3 #9771 (MSVC)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module printfl
+                                      6 	.optsdcc -mmcs51 --model-large --xstack
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl __ltoa
+                                     12 	.globl _putchar
+                                     13 	.globl _aligned_alloc_PARM_2
+                                     14 	.globl _printf_small
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
+                                     17 ;--------------------------------------------------------
+                                     18 	.area RSEG    (ABS,DATA)
+      000000                         19 	.org 0x0000
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function bits
+                                     22 ;--------------------------------------------------------
+                                     23 	.area RSEG    (ABS,DATA)
+      000000                         24 	.org 0x0000
+                                     25 ;--------------------------------------------------------
+                                     26 ; overlayable register banks
+                                     27 ;--------------------------------------------------------
+                                     28 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         29 	.ds 8
+                                     30 ;--------------------------------------------------------
+                                     31 ; internal ram data
+                                     32 ;--------------------------------------------------------
+                                     33 	.area DSEG    (DATA)
+      000000                         34 _radix:
+      000000                         35 	.ds 1
+      000001                         36 _str:
+      000001                         37 	.ds 3
+      000004                         38 _val:
+      000004                         39 	.ds 4
+                                     40 ;--------------------------------------------------------
+                                     41 ; overlayable items in internal ram 
+                                     42 ;--------------------------------------------------------
+                                     43 ;--------------------------------------------------------
+                                     44 ; indirectly addressable internal ram data
+                                     45 ;--------------------------------------------------------
+                                     46 	.area ISEG    (DATA)
+      000000                         47 _printf_small_buffer_5_40:
+      000000                         48 	.ds 12
+                                     49 ;--------------------------------------------------------
+                                     50 ; absolute internal ram data
+                                     51 ;--------------------------------------------------------
+                                     52 	.area IABS    (ABS,DATA)
+                                     53 	.area IABS    (ABS,DATA)
+                                     54 ;--------------------------------------------------------
+                                     55 ; bit data
+                                     56 ;--------------------------------------------------------
+                                     57 	.area BSEG    (BIT)
+      000000                         58 _long_flag:
+      000000                         59 	.ds 1
+      000001                         60 _string_flag:
+      000001                         61 	.ds 1
+      000002                         62 _char_flag:
+      000002                         63 	.ds 1
+                                     64 ;--------------------------------------------------------
+                                     65 ; paged external ram data
+                                     66 ;--------------------------------------------------------
+                                     67 	.area PSEG    (PAG,XDATA)
+                                     68 ;--------------------------------------------------------
+                                     69 ; external ram data
+                                     70 ;--------------------------------------------------------
+                                     71 	.area XSEG    (XDATA)
+      000000                         72 _aligned_alloc_PARM_2:
+      000000                         73 	.ds 2
+                                     74 ;--------------------------------------------------------
+                                     75 ; absolute external ram data
+                                     76 ;--------------------------------------------------------
+                                     77 	.area XABS    (ABS,XDATA)
+                                     78 ;--------------------------------------------------------
+                                     79 ; external initialized ram data
+                                     80 ;--------------------------------------------------------
+                                     81 	.area XISEG   (XDATA)
+                                     82 	.area HOME    (CODE)
+                                     83 	.area GSINIT0 (CODE)
+                                     84 	.area GSINIT1 (CODE)
+                                     85 	.area GSINIT2 (CODE)
+                                     86 	.area GSINIT3 (CODE)
+                                     87 	.area GSINIT4 (CODE)
+                                     88 	.area GSINIT5 (CODE)
+                                     89 	.area GSINIT  (CODE)
+                                     90 	.area GSFINAL (CODE)
+                                     91 	.area CSEG    (CODE)
+                                     92 ;--------------------------------------------------------
+                                     93 ; global & static initialisations
+                                     94 ;--------------------------------------------------------
+                                     95 	.area HOME    (CODE)
+                                     96 	.area GSINIT  (CODE)
+                                     97 	.area GSFINAL (CODE)
+                                     98 	.area GSINIT  (CODE)
+                                     99 ;	printfl.c:50: static __bit  long_flag = 0;
+      000000 C2*00            [12]  100 	clr	_long_flag
+                                    101 ;	printfl.c:51: static __bit  string_flag =0;
+      000002 C2*01            [12]  102 	clr	_string_flag
+                                    103 ;	printfl.c:52: static __bit  char_flag = 0;
+      000004 C2*02            [12]  104 	clr	_char_flag
+                                    105 ;--------------------------------------------------------
+                                    106 ; Home
+                                    107 ;--------------------------------------------------------
+                                    108 	.area HOME    (CODE)
+                                    109 	.area HOME    (CODE)
+                                    110 ;--------------------------------------------------------
+                                    111 ; code
+                                    112 ;--------------------------------------------------------
+                                    113 	.area CSEG    (CODE)
+                                    114 ;------------------------------------------------------------
+                                    115 ;Allocation info for local variables in function 'printf_small'
+                                    116 ;------------------------------------------------------------
+                                    117 ;fmt                       Allocated to stack - _bpx -4
+                                    118 ;ap                        Allocated to stack - _bpx +0
+                                    119 ;stri                      Allocated to stack - _bpx +1
+                                    120 ;buffer                    Allocated with name '_printf_small_buffer_5_40'
+                                    121 ;------------------------------------------------------------
+                                    122 ;	printfl.c:124: void printf_small (char * fmt, ... ) __reentrant
+                                    123 ;	-----------------------------------------
+                                    124 ;	 function printf_small
+                                    125 ;	-----------------------------------------
+      000000                        126 _printf_small:
+                           000007   127 	ar7 = 0x07
+                           000006   128 	ar6 = 0x06
+                           000005   129 	ar5 = 0x05
+                           000004   130 	ar4 = 0x04
+                           000003   131 	ar3 = 0x03
+                           000002   132 	ar2 = 0x02
+                           000001   133 	ar1 = 0x01
+                           000000   134 	ar0 = 0x00
+      000000 A8*00            [24]  135 	mov	r0,_spx
+      000002 05*00            [12]  136 	inc	_spx
+      000004 C5*00            [12]  137 	xch	a,_bpx
+      000006 F2               [24]  138 	movx	@r0,a
+      000007 08               [12]  139 	inc	r0
+      000008 E8               [12]  140 	mov	a,r0
+      000009 C5*00            [12]  141 	xch	a,_bpx
+      00000B 05*00            [12]  142 	inc	_spx
+                                    143 ;	printfl.c:128: va_start(ap,fmt);
+      00000D E5*00            [12]  144 	mov	a,_bpx
+      00000F 24 FC            [12]  145 	add	a,#0xfc
+      000011 FF               [12]  146 	mov	r7,a
+      000012 A8*00            [24]  147 	mov	r0,_bpx
+      000014 F2               [24]  148 	movx	@r0,a
+      000015                        149 00133$:
+                                    150 ;	printfl.c:130: for (; *fmt ; fmt++ ) {
+      000015 E5*00            [12]  151 	mov	a,_bpx
+      000017 24 FC            [12]  152 	add	a,#0xfc
+      000019 F8               [12]  153 	mov	r0,a
+      00001A E2               [24]  154 	movx	a,@r0
+      00001B FD               [12]  155 	mov	r5,a
+      00001C 08               [12]  156 	inc	r0
+      00001D E2               [24]  157 	movx	a,@r0
+      00001E FE               [12]  158 	mov	r6,a
+      00001F 08               [12]  159 	inc	r0
+      000020 E2               [24]  160 	movx	a,@r0
+      000021 FF               [12]  161 	mov	r7,a
+      000022 8D 82            [24]  162 	mov	dpl,r5
+      000024 8E 83            [24]  163 	mov	dph,r6
+      000026 8F F0            [24]  164 	mov	b,r7
+      000028 12r00r00         [24]  165 	lcall	__gptrget
+      00002B FC               [12]  166 	mov	r4,a
+      00002C 70 03            [24]  167 	jnz	00191$
+      00002E 02r01rFA         [24]  168 	ljmp	00134$
+      000031                        169 00191$:
+                                    170 ;	printfl.c:131: if (*fmt == '%') {
+      000031 BC 25 02         [24]  171 	cjne	r4,#0x25,00192$
+      000034 80 03            [24]  172 	sjmp	00193$
+      000036                        173 00192$:
+      000036 02r01rE0         [24]  174 	ljmp	00128$
+      000039                        175 00193$:
+                                    176 ;	printfl.c:132: long_flag = string_flag = char_flag = 0;
+      000039 C2*02            [12]  177 	clr	_char_flag
+      00003B C2*01            [12]  178 	clr	_string_flag
+      00003D C2*00            [12]  179 	clr	_long_flag
+                                    180 ;	printfl.c:133: fmt++ ;
+      00003F E5*00            [12]  181 	mov	a,_bpx
+      000041 24 FC            [12]  182 	add	a,#0xfc
+      000043 F8               [12]  183 	mov	r0,a
+      000044 74 01            [12]  184 	mov	a,#0x01
+      000046 2D               [12]  185 	add	a,r5
+      000047 F2               [24]  186 	movx	@r0,a
+      000048 E4               [12]  187 	clr	a
+      000049 3E               [12]  188 	addc	a,r6
+      00004A 08               [12]  189 	inc	r0
+      00004B F2               [24]  190 	movx	@r0,a
+      00004C 08               [12]  191 	inc	r0
+      00004D EF               [12]  192 	mov	a,r7
+      00004E F2               [24]  193 	movx	@r0,a
+                                    194 ;	printfl.c:134: switch (*fmt) {
+      00004F E5*00            [12]  195 	mov	a,_bpx
+      000051 24 FC            [12]  196 	add	a,#0xfc
+      000053 F8               [12]  197 	mov	r0,a
+      000054 E2               [24]  198 	movx	a,@r0
+      000055 FD               [12]  199 	mov	r5,a
+      000056 08               [12]  200 	inc	r0
+      000057 E2               [24]  201 	movx	a,@r0
+      000058 FE               [12]  202 	mov	r6,a
+      000059 08               [12]  203 	inc	r0
+      00005A E2               [24]  204 	movx	a,@r0
+      00005B FF               [12]  205 	mov	r7,a
+      00005C 8D 82            [24]  206 	mov	dpl,r5
+      00005E 8E 83            [24]  207 	mov	dph,r6
+      000060 8F F0            [24]  208 	mov	b,r7
+      000062 12r00r00         [24]  209 	lcall	__gptrget
+      000065 FB               [12]  210 	mov	r3,a
+      000066 BB 68 02         [24]  211 	cjne	r3,#0x68,00194$
+      000069 80 17            [24]  212 	sjmp	00102$
+      00006B                        213 00194$:
+      00006B BB 6C 26         [24]  214 	cjne	r3,#0x6c,00103$
+                                    215 ;	printfl.c:136: long_flag = 1;
+      00006E D2*00            [12]  216 	setb	_long_flag
+                                    217 ;	printfl.c:137: fmt++;
+      000070 E5*00            [12]  218 	mov	a,_bpx
+      000072 24 FC            [12]  219 	add	a,#0xfc
+      000074 F8               [12]  220 	mov	r0,a
+      000075 74 01            [12]  221 	mov	a,#0x01
+      000077 2D               [12]  222 	add	a,r5
+      000078 F2               [24]  223 	movx	@r0,a
+      000079 E4               [12]  224 	clr	a
+      00007A 3E               [12]  225 	addc	a,r6
+      00007B 08               [12]  226 	inc	r0
+      00007C F2               [24]  227 	movx	@r0,a
+      00007D 08               [12]  228 	inc	r0
+      00007E EF               [12]  229 	mov	a,r7
+      00007F F2               [24]  230 	movx	@r0,a
+                                    231 ;	printfl.c:138: break;
+                                    232 ;	printfl.c:139: case 'h':
+      000080 80 12            [24]  233 	sjmp	00103$
+      000082                        234 00102$:
+                                    235 ;	printfl.c:140: char_flag = 1;
+      000082 D2*02            [12]  236 	setb	_char_flag
+                                    237 ;	printfl.c:141: fmt++;
+      000084 E5*00            [12]  238 	mov	a,_bpx
+      000086 24 FC            [12]  239 	add	a,#0xfc
+      000088 F8               [12]  240 	mov	r0,a
+      000089 74 01            [12]  241 	mov	a,#0x01
+      00008B 2D               [12]  242 	add	a,r5
+      00008C F2               [24]  243 	movx	@r0,a
+      00008D E4               [12]  244 	clr	a
+      00008E 3E               [12]  245 	addc	a,r6
+      00008F 08               [12]  246 	inc	r0
+      000090 F2               [24]  247 	movx	@r0,a
+      000091 08               [12]  248 	inc	r0
+      000092 EF               [12]  249 	mov	a,r7
+      000093 F2               [24]  250 	movx	@r0,a
+                                    251 ;	printfl.c:142: }
+      000094                        252 00103$:
+                                    253 ;	printfl.c:144: switch (*fmt) {
+      000094 E5*00            [12]  254 	mov	a,_bpx
+      000096 24 FC            [12]  255 	add	a,#0xfc
+      000098 F8               [12]  256 	mov	r0,a
+      000099 E2               [24]  257 	movx	a,@r0
+      00009A FD               [12]  258 	mov	r5,a
+      00009B 08               [12]  259 	inc	r0
+      00009C E2               [24]  260 	movx	a,@r0
+      00009D FE               [12]  261 	mov	r6,a
+      00009E 08               [12]  262 	inc	r0
+      00009F E2               [24]  263 	movx	a,@r0
+      0000A0 FF               [12]  264 	mov	r7,a
+      0000A1 8D 82            [24]  265 	mov	dpl,r5
+      0000A3 8E 83            [24]  266 	mov	dph,r6
+      0000A5 8F F0            [24]  267 	mov	b,r7
+      0000A7 12r00r00         [24]  268 	lcall	__gptrget
+      0000AA FF               [12]  269 	mov	r7,a
+      0000AB BF 63 02         [24]  270 	cjne	r7,#0x63,00197$
+      0000AE 80 22            [24]  271 	sjmp	00107$
+      0000B0                        272 00197$:
+      0000B0 BF 64 02         [24]  273 	cjne	r7,#0x64,00198$
+      0000B3 80 13            [24]  274 	sjmp	00105$
+      0000B5                        275 00198$:
+      0000B5 BF 6F 02         [24]  276 	cjne	r7,#0x6f,00199$
+      0000B8 80 1D            [24]  277 	sjmp	00108$
+      0000BA                        278 00199$:
+      0000BA BF 73 02         [24]  279 	cjne	r7,#0x73,00200$
+      0000BD 80 05            [24]  280 	sjmp	00104$
+      0000BF                        281 00200$:
+                                    282 ;	printfl.c:145: case 's':
+      0000BF BF 78 18         [24]  283 	cjne	r7,#0x78,00109$
+      0000C2 80 09            [24]  284 	sjmp	00106$
+      0000C4                        285 00104$:
+                                    286 ;	printfl.c:146: string_flag = 1;
+      0000C4 D2*01            [12]  287 	setb	_string_flag
+                                    288 ;	printfl.c:147: break;
+                                    289 ;	printfl.c:148: case 'd':
+      0000C6 80 12            [24]  290 	sjmp	00109$
+      0000C8                        291 00105$:
+                                    292 ;	printfl.c:149: radix = 10;
+      0000C8 75*00 0A         [24]  293 	mov	_radix,#0x0a
+                                    294 ;	printfl.c:150: break;
+                                    295 ;	printfl.c:151: case 'x':
+      0000CB 80 0D            [24]  296 	sjmp	00109$
+      0000CD                        297 00106$:
+                                    298 ;	printfl.c:152: radix = 16;
+      0000CD 75*00 10         [24]  299 	mov	_radix,#0x10
+                                    300 ;	printfl.c:153: break;
+                                    301 ;	printfl.c:154: case 'c':
+      0000D0 80 08            [24]  302 	sjmp	00109$
+      0000D2                        303 00107$:
+                                    304 ;	printfl.c:155: radix = 0;
+      0000D2 75*00 00         [24]  305 	mov	_radix,#0x00
+                                    306 ;	printfl.c:156: break;
+                                    307 ;	printfl.c:157: case 'o':
+      0000D5 80 03            [24]  308 	sjmp	00109$
+      0000D7                        309 00108$:
+                                    310 ;	printfl.c:158: radix = 8;
+      0000D7 75*00 08         [24]  311 	mov	_radix,#0x08
+                                    312 ;	printfl.c:160: }
+      0000DA                        313 00109$:
+                                    314 ;	printfl.c:162: if (string_flag) {
+      0000DA 30*01 51         [24]  315 	jnb	_string_flag,00114$
+                                    316 ;	printfl.c:163: str = va_arg(ap, char *);
+      0000DD A8*00            [24]  317 	mov	r0,_bpx
+      0000DF E2               [24]  318 	movx	a,@r0
+      0000E0 FF               [12]  319 	mov	r7,a
+      0000E1 1F               [12]  320 	dec	r7
+      0000E2 1F               [12]  321 	dec	r7
+      0000E3 1F               [12]  322 	dec	r7
+      0000E4 A8*00            [24]  323 	mov	r0,_bpx
+      0000E6 EF               [12]  324 	mov	a,r7
+      0000E7 F2               [24]  325 	movx	@r0,a
+      0000E8 8F 01            [24]  326 	mov	ar1,r7
+      0000EA E3               [24]  327 	movx	a,@r1
+      0000EB F5*01            [12]  328 	mov	_str,a
+      0000ED 09               [12]  329 	inc	r1
+      0000EE E3               [24]  330 	movx	a,@r1
+      0000EF F5*02            [12]  331 	mov	(_str + 1),a
+      0000F1 09               [12]  332 	inc	r1
+      0000F2 E3               [24]  333 	movx	a,@r1
+      0000F3 F5*03            [12]  334 	mov	(_str + 2),a
+      0000F5 19               [12]  335 	dec	r1
+      0000F6 19               [12]  336 	dec	r1
+                                    337 ;	printfl.c:164: while (*str) putchar(*str++);
+      0000F7                        338 00110$:
+      0000F7 AD*01            [24]  339 	mov	r5,_str
+      0000F9 AE*02            [24]  340 	mov	r6,(_str + 1)
+      0000FB AF*03            [24]  341 	mov	r7,(_str + 2)
+      0000FD 8D 82            [24]  342 	mov	dpl,r5
+      0000FF 8E 83            [24]  343 	mov	dph,r6
+      000101 8F F0            [24]  344 	mov	b,r7
+      000103 12r00r00         [24]  345 	lcall	__gptrget
+      000106 70 03            [24]  346 	jnz	00203$
+      000108 02r01rE9         [24]  347 	ljmp	00130$
+      00010B                        348 00203$:
+      00010B AD*01            [24]  349 	mov	r5,_str
+      00010D AE*02            [24]  350 	mov	r6,(_str + 1)
+      00010F AF*03            [24]  351 	mov	r7,(_str + 2)
+      000111 8D 82            [24]  352 	mov	dpl,r5
+      000113 8E 83            [24]  353 	mov	dph,r6
+      000115 8F F0            [24]  354 	mov	b,r7
+      000117 12r00r00         [24]  355 	lcall	__gptrget
+      00011A FD               [12]  356 	mov	r5,a
+      00011B 05*01            [12]  357 	inc	_str
+      00011D E4               [12]  358 	clr	a
+      00011E B5*01 02         [24]  359 	cjne	a,_str,00204$
+      000121 05*02            [12]  360 	inc	(_str + 1)
+      000123                        361 00204$:
+      000123 7F 00            [12]  362 	mov	r7,#0x00
+      000125 8D 82            [24]  363 	mov	dpl,r5
+      000127 8F 83            [24]  364 	mov	dph,r7
+      000129 12r00r00         [24]  365 	lcall	_putchar
+                                    366 ;	printfl.c:165: continue ;
+      00012C 80 C9            [24]  367 	sjmp	00110$
+      00012E                        368 00114$:
+                                    369 ;	printfl.c:168: if (long_flag)
+      00012E 30*00 22         [24]  370 	jnb	_long_flag,00119$
+                                    371 ;	printfl.c:169: val = va_arg(ap,long);
+      000131 A8*00            [24]  372 	mov	r0,_bpx
+      000133 E2               [24]  373 	movx	a,@r0
+      000134 FF               [12]  374 	mov	r7,a
+      000135 1F               [12]  375 	dec	r7
+      000136 1F               [12]  376 	dec	r7
+      000137 1F               [12]  377 	dec	r7
+      000138 1F               [12]  378 	dec	r7
+      000139 A8*00            [24]  379 	mov	r0,_bpx
+      00013B EF               [12]  380 	mov	a,r7
+      00013C F2               [24]  381 	movx	@r0,a
+      00013D 8F 01            [24]  382 	mov	ar1,r7
+      00013F E3               [24]  383 	movx	a,@r1
+      000140 F5*04            [12]  384 	mov	_val,a
+      000142 09               [12]  385 	inc	r1
+      000143 E3               [24]  386 	movx	a,@r1
+      000144 F5*05            [12]  387 	mov	(_val + 1),a
+      000146 09               [12]  388 	inc	r1
+      000147 E3               [24]  389 	movx	a,@r1
+      000148 F5*06            [12]  390 	mov	(_val + 2),a
+      00014A 09               [12]  391 	inc	r1
+      00014B E3               [24]  392 	movx	a,@r1
+      00014C F5*07            [12]  393 	mov	(_val + 3),a
+      00014E 19               [12]  394 	dec	r1
+      00014F 19               [12]  395 	dec	r1
+      000150 19               [12]  396 	dec	r1
+      000151 80 38            [24]  397 	sjmp	00120$
+      000153                        398 00119$:
+                                    399 ;	printfl.c:171: if (char_flag)
+      000153 30*02 17         [24]  400 	jnb	_char_flag,00116$
+                                    401 ;	printfl.c:172: val = va_arg(ap,char);
+      000156 A8*00            [24]  402 	mov	r0,_bpx
+      000158 E2               [24]  403 	movx	a,@r0
+      000159 14               [12]  404 	dec	a
+      00015A F9               [12]  405 	mov	r1,a
+      00015B A8*00            [24]  406 	mov	r0,_bpx
+      00015D F2               [24]  407 	movx	@r0,a
+      00015E E3               [24]  408 	movx	a,@r1
+      00015F FF               [12]  409 	mov	r7,a
+      000160 8F*04            [24]  410 	mov	_val,r7
+      000162 75*05 00         [24]  411 	mov	(_val + 1),#0x00
+      000165 75*06 00         [24]  412 	mov	(_val + 2),#0x00
+      000168 75*07 00         [24]  413 	mov	(_val + 3),#0x00
+      00016B 80 1E            [24]  414 	sjmp	00120$
+      00016D                        415 00116$:
+                                    416 ;	printfl.c:174: val = va_arg(ap,int);
+      00016D A8*00            [24]  417 	mov	r0,_bpx
+      00016F E2               [24]  418 	movx	a,@r0
+      000170 FF               [12]  419 	mov	r7,a
+      000171 1F               [12]  420 	dec	r7
+      000172 1F               [12]  421 	dec	r7
+      000173 A8*00            [24]  422 	mov	r0,_bpx
+      000175 EF               [12]  423 	mov	a,r7
+      000176 F2               [24]  424 	movx	@r0,a
+      000177 8F 01            [24]  425 	mov	ar1,r7
+      000179 E3               [24]  426 	movx	a,@r1
+      00017A FE               [12]  427 	mov	r6,a
+      00017B 09               [12]  428 	inc	r1
+      00017C E3               [24]  429 	movx	a,@r1
+      00017D FF               [12]  430 	mov	r7,a
+      00017E 19               [12]  431 	dec	r1
+      00017F 8E*04            [24]  432 	mov	_val,r6
+      000181 EF               [12]  433 	mov	a,r7
+      000182 F5*05            [12]  434 	mov	(_val + 1),a
+      000184 33               [12]  435 	rlc	a
+      000185 95 E0            [12]  436 	subb	a,acc
+      000187 F5*06            [12]  437 	mov	(_val + 2),a
+      000189 F5*07            [12]  438 	mov	(_val + 3),a
+      00018B                        439 00120$:
+                                    440 ;	printfl.c:179: if (radix)
+      00018B E5*00            [12]  441 	mov	a,_radix
+      00018D 60 44            [24]  442 	jz	00125$
+                                    443 ;	printfl.c:184: _ltoa (val, buffer, radix);
+      00018F 90r00r00         [24]  444 	mov	dptr,#__ltoa_PARM_2
+      000192 74r00            [12]  445 	mov	a,#_printf_small_buffer_5_40
+      000194 F0               [24]  446 	movx	@dptr,a
+      000195 E4               [12]  447 	clr	a
+      000196 A3               [24]  448 	inc	dptr
+      000197 F0               [24]  449 	movx	@dptr,a
+      000198 74 40            [12]  450 	mov	a,#0x40
+      00019A A3               [24]  451 	inc	dptr
+      00019B F0               [24]  452 	movx	@dptr,a
+      00019C 90r00r00         [24]  453 	mov	dptr,#__ltoa_PARM_3
+      00019F E5*00            [12]  454 	mov	a,_radix
+      0001A1 F0               [24]  455 	movx	@dptr,a
+      0001A2 85*04 82         [24]  456 	mov	dpl,_val
+      0001A5 85*05 83         [24]  457 	mov	dph,(_val + 1)
+      0001A8 85*06 F0         [24]  458 	mov	b,(_val + 2)
+      0001AB E5*07            [12]  459 	mov	a,(_val + 3)
+      0001AD 12r00r00         [24]  460 	lcall	__ltoa
+                                    461 ;	printfl.c:186: while (*stri)
+      0001B0 79r00            [12]  462 	mov	r1,#_printf_small_buffer_5_40
+      0001B2                        463 00121$:
+      0001B2 E7               [12]  464 	mov	a,@r1
+      0001B3 FF               [12]  465 	mov	r7,a
+      0001B4 60 33            [24]  466 	jz	00130$
+                                    467 ;	printfl.c:188: putchar (*stri);
+      0001B6 7E 00            [12]  468 	mov	r6,#0x00
+      0001B8 C0 00            [24]  469 	push	ar0
+      0001BA E9               [12]  470 	mov	a,r1
+      0001BB A8*00            [24]  471 	mov	r0,_spx
+      0001BD 05*00            [12]  472 	inc	_spx
+      0001BF F2               [24]  473 	movx	@r0,a
+      0001C0 D0 00            [24]  474 	pop	ar0
+      0001C2 8F 82            [24]  475 	mov	dpl,r7
+      0001C4 8E 83            [24]  476 	mov	dph,r6
+      0001C6 12r00r00         [24]  477 	lcall	_putchar
+      0001C9 A8*00            [24]  478 	mov	r0,_spx
+      0001CB 18               [12]  479 	dec	r0
+      0001CC E2               [24]  480 	movx	a,@r0
+      0001CD F9               [12]  481 	mov	r1,a
+      0001CE 15*00            [12]  482 	dec	_spx
+                                    483 ;	printfl.c:189: stri++;
+      0001D0 09               [12]  484 	inc	r1
+      0001D1 80 DF            [24]  485 	sjmp	00121$
+      0001D3                        486 00125$:
+                                    487 ;	printfl.c:194: putchar((char)val);
+      0001D3 AF*04            [24]  488 	mov	r7,_val
+      0001D5 7E 00            [12]  489 	mov	r6,#0x00
+      0001D7 8F 82            [24]  490 	mov	dpl,r7
+      0001D9 8E 83            [24]  491 	mov	dph,r6
+      0001DB 12r00r00         [24]  492 	lcall	_putchar
+      0001DE 80 09            [24]  493 	sjmp	00130$
+      0001E0                        494 00128$:
+                                    495 ;	printfl.c:197: putchar(*fmt);
+      0001E0 7F 00            [12]  496 	mov	r7,#0x00
+      0001E2 8C 82            [24]  497 	mov	dpl,r4
+      0001E4 8F 83            [24]  498 	mov	dph,r7
+      0001E6 12r00r00         [24]  499 	lcall	_putchar
+      0001E9                        500 00130$:
+                                    501 ;	printfl.c:130: for (; *fmt ; fmt++ ) {
+      0001E9 E5*00            [12]  502 	mov	a,_bpx
+      0001EB 24 FC            [12]  503 	add	a,#0xfc
+      0001ED F8               [12]  504 	mov	r0,a
+      0001EE E2               [24]  505 	movx	a,@r0
+      0001EF 24 01            [12]  506 	add	a,#0x01
+      0001F1 F2               [24]  507 	movx	@r0,a
+      0001F2 08               [12]  508 	inc	r0
+      0001F3 E2               [24]  509 	movx	a,@r0
+      0001F4 34 00            [12]  510 	addc	a,#0x00
+      0001F6 F2               [24]  511 	movx	@r0,a
+      0001F7 02r00r15         [24]  512 	ljmp	00133$
+      0001FA                        513 00134$:
+      0001FA C5*00            [12]  514 	xch	a,_bpx
+      0001FC F8               [12]  515 	mov	r0,a
+      0001FD 18               [12]  516 	dec	r0
+      0001FE E2               [24]  517 	movx	a,@r0
+      0001FF C5*00            [12]  518 	xch	a,_bpx
+      000201 88*00            [24]  519 	mov	_spx,r0
+      000203 22               [24]  520 	ret
+                                    521 	.area CSEG    (CODE)
+                                    522 	.area CONST   (CODE)
+                                    523 	.area XINIT   (CODE)
+                                    524 	.area CABS    (ABS,CODE)

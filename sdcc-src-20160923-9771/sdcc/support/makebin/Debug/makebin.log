@@ -1,0 +1,3 @@
+﻿  makebin.c
+makebin.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  makebin.vcxproj -> C:\temp\sdcc-src-20160923-9771\sdcc\support\makebin\..\..\bin_vc\makebin.exe

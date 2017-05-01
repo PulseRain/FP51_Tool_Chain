@@ -1,0 +1,465 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.6.3 #9771 (MSVC)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module malloc
+                                      6 	.optsdcc -mmcs51 --model-large --xstack
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl ___sdcc_heap_init
+                                     12 	.globl ___sdcc_heap_free
+                                     13 	.globl _aligned_alloc_PARM_2
+                                     14 	.globl _malloc
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
+                                     17 ;--------------------------------------------------------
+                                     18 	.area RSEG    (ABS,DATA)
+      000000                         19 	.org 0x0000
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function bits
+                                     22 ;--------------------------------------------------------
+                                     23 	.area RSEG    (ABS,DATA)
+      000000                         24 	.org 0x0000
+                                     25 ;--------------------------------------------------------
+                                     26 ; overlayable register banks
+                                     27 ;--------------------------------------------------------
+                                     28 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         29 	.ds 8
+                                     30 ;--------------------------------------------------------
+                                     31 ; internal ram data
+                                     32 ;--------------------------------------------------------
+                                     33 	.area DSEG    (DATA)
+      000000                         34 _malloc_sloc0_1_0:
+      000000                         35 	.ds 2
+                                     36 ;--------------------------------------------------------
+                                     37 ; overlayable items in internal ram 
+                                     38 ;--------------------------------------------------------
+                                     39 ;--------------------------------------------------------
+                                     40 ; indirectly addressable internal ram data
+                                     41 ;--------------------------------------------------------
+                                     42 	.area ISEG    (DATA)
+                                     43 ;--------------------------------------------------------
+                                     44 ; absolute internal ram data
+                                     45 ;--------------------------------------------------------
+                                     46 	.area IABS    (ABS,DATA)
+                                     47 	.area IABS    (ABS,DATA)
+                                     48 ;--------------------------------------------------------
+                                     49 ; bit data
+                                     50 ;--------------------------------------------------------
+                                     51 	.area BSEG    (BIT)
+                                     52 ;--------------------------------------------------------
+                                     53 ; paged external ram data
+                                     54 ;--------------------------------------------------------
+                                     55 	.area PSEG    (PAG,XDATA)
+                                     56 ;--------------------------------------------------------
+                                     57 ; external ram data
+                                     58 ;--------------------------------------------------------
+                                     59 	.area XSEG    (XDATA)
+      000000                         60 _aligned_alloc_PARM_2:
+      000000                         61 	.ds 2
+      000002                         62 ___sdcc_heap_free::
+      000002                         63 	.ds 2
+      000004                         64 _malloc_size_1_23:
+      000004                         65 	.ds 2
+      000006                         66 _malloc_h_1_24:
+      000006                         67 	.ds 2
+      000008                         68 _malloc_f_1_24:
+      000008                         69 	.ds 2
+                                     70 ;--------------------------------------------------------
+                                     71 ; absolute external ram data
+                                     72 ;--------------------------------------------------------
+                                     73 	.area XABS    (ABS,XDATA)
+                                     74 ;--------------------------------------------------------
+                                     75 ; external initialized ram data
+                                     76 ;--------------------------------------------------------
+                                     77 	.area XISEG   (XDATA)
+                                     78 	.area HOME    (CODE)
+                                     79 	.area GSINIT0 (CODE)
+                                     80 	.area GSINIT1 (CODE)
+                                     81 	.area GSINIT2 (CODE)
+                                     82 	.area GSINIT3 (CODE)
+                                     83 	.area GSINIT4 (CODE)
+                                     84 	.area GSINIT5 (CODE)
+                                     85 	.area GSINIT  (CODE)
+                                     86 	.area GSFINAL (CODE)
+                                     87 	.area CSEG    (CODE)
+                                     88 ;--------------------------------------------------------
+                                     89 ; global & static initialisations
+                                     90 ;--------------------------------------------------------
+                                     91 	.area HOME    (CODE)
+                                     92 	.area GSINIT  (CODE)
+                                     93 	.area GSFINAL (CODE)
+                                     94 	.area GSINIT  (CODE)
+                                     95 ;--------------------------------------------------------
+                                     96 ; Home
+                                     97 ;--------------------------------------------------------
+                                     98 	.area HOME    (CODE)
+                                     99 	.area HOME    (CODE)
+                                    100 ;--------------------------------------------------------
+                                    101 ; code
+                                    102 ;--------------------------------------------------------
+                                    103 	.area CSEG    (CODE)
+                                    104 ;------------------------------------------------------------
+                                    105 ;Allocation info for local variables in function '__sdcc_heap_init'
+                                    106 ;------------------------------------------------------------
+                                    107 ;	malloc.c:63: void __sdcc_heap_init(void)
+                                    108 ;	-----------------------------------------
+                                    109 ;	 function __sdcc_heap_init
+                                    110 ;	-----------------------------------------
+      000000                        111 ___sdcc_heap_init:
+                           000007   112 	ar7 = 0x07
+                           000006   113 	ar6 = 0x06
+                           000005   114 	ar5 = 0x05
+                           000004   115 	ar4 = 0x04
+                           000003   116 	ar3 = 0x03
+                           000002   117 	ar2 = 0x02
+                           000001   118 	ar1 = 0x01
+                           000000   119 	ar0 = 0x00
+                                    120 ;	malloc.c:65: __sdcc_heap_free = HEAP_START;
+      000000 90r00r02         [24]  121 	mov	dptr,#___sdcc_heap_free
+      000003 74r00            [12]  122 	mov	a,#___sdcc_heap
+      000005 F0               [24]  123 	movx	@dptr,a
+      000006 74s00            [12]  124 	mov	a,#(___sdcc_heap >> 8)
+      000008 A3               [24]  125 	inc	dptr
+      000009 F0               [24]  126 	movx	@dptr,a
+                                    127 ;	malloc.c:66: __sdcc_heap_free->next = HEAP_END;
+      00000A 90r00r00         [24]  128 	mov	dptr,#___sdcc_heap_size
+      00000D E4               [12]  129 	clr	a
+      00000E 93               [24]  130 	movc	a,@a+dptr
+      00000F FE               [12]  131 	mov	r6,a
+      000010 74 01            [12]  132 	mov	a,#0x01
+      000012 93               [24]  133 	movc	a,@a+dptr
+      000013 FF               [12]  134 	mov	r7,a
+      000014 1E               [12]  135 	dec	r6
+      000015 BE FF 01         [24]  136 	cjne	r6,#0xff,00103$
+      000018 1F               [12]  137 	dec	r7
+      000019                        138 00103$:
+      000019 EE               [12]  139 	mov	a,r6
+      00001A 24r00            [12]  140 	add	a,#___sdcc_heap
+      00001C FE               [12]  141 	mov	r6,a
+      00001D EF               [12]  142 	mov	a,r7
+      00001E 34s00            [12]  143 	addc	a,#(___sdcc_heap >> 8)
+      000020 FF               [12]  144 	mov	r7,a
+      000021 90r00r00         [24]  145 	mov	dptr,#___sdcc_heap
+      000024 EE               [12]  146 	mov	a,r6
+      000025 F0               [24]  147 	movx	@dptr,a
+      000026 EF               [12]  148 	mov	a,r7
+      000027 A3               [24]  149 	inc	dptr
+      000028 F0               [24]  150 	movx	@dptr,a
+                                    151 ;	malloc.c:67: __sdcc_heap_free->next_free = 0;
+      000029 90r00r02         [24]  152 	mov	dptr,#(___sdcc_heap + 0x0002)
+      00002C E4               [12]  153 	clr	a
+      00002D F0               [24]  154 	movx	@dptr,a
+      00002E A3               [24]  155 	inc	dptr
+      00002F F0               [24]  156 	movx	@dptr,a
+      000030 22               [24]  157 	ret
+                                    158 ;------------------------------------------------------------
+                                    159 ;Allocation info for local variables in function 'malloc'
+                                    160 ;------------------------------------------------------------
+                                    161 ;sloc0                     Allocated with name '_malloc_sloc0_1_0'
+                                    162 ;size                      Allocated with name '_malloc_size_1_23'
+                                    163 ;h                         Allocated with name '_malloc_h_1_24'
+                                    164 ;f                         Allocated with name '_malloc_f_1_24'
+                                    165 ;blocksize                 Allocated with name '_malloc_blocksize_3_26'
+                                    166 ;newheader                 Allocated with name '_malloc_newheader_5_28'
+                                    167 ;------------------------------------------------------------
+                                    168 ;	malloc.c:70: void XDATA *malloc(size_t size)
+                                    169 ;	-----------------------------------------
+                                    170 ;	 function malloc
+                                    171 ;	-----------------------------------------
+      000031                        172 _malloc:
+      000031 AF 83            [24]  173 	mov	r7,dph
+      000033 E5 82            [12]  174 	mov	a,dpl
+      000035 90r00r04         [24]  175 	mov	dptr,#_malloc_size_1_23
+      000038 F0               [24]  176 	movx	@dptr,a
+      000039 EF               [12]  177 	mov	a,r7
+      00003A A3               [24]  178 	inc	dptr
+      00003B F0               [24]  179 	movx	@dptr,a
+                                    180 ;	malloc.c:76: if(!__sdcc_heap_free)
+      00003C 90r00r02         [24]  181 	mov	dptr,#___sdcc_heap_free
+      00003F E0               [24]  182 	movx	a,@dptr
+      000040 F5 F0            [12]  183 	mov	b,a
+      000042 A3               [24]  184 	inc	dptr
+      000043 E0               [24]  185 	movx	a,@dptr
+      000044 45 F0            [12]  186 	orl	a,b
+      000046 70 03            [24]  187 	jnz	00102$
+                                    188 ;	malloc.c:77: __sdcc_heap_init();
+      000048 12r00r00         [24]  189 	lcall	___sdcc_heap_init
+      00004B                        190 00102$:
+                                    191 ;	malloc.c:80: if(!size || size + offsetof(struct header, next_free) < size)
+      00004B 90r00r04         [24]  192 	mov	dptr,#_malloc_size_1_23
+      00004E E0               [24]  193 	movx	a,@dptr
+      00004F FE               [12]  194 	mov	r6,a
+      000050 A3               [24]  195 	inc	dptr
+      000051 E0               [24]  196 	movx	a,@dptr
+      000052 FF               [12]  197 	mov	r7,a
+      000053 4E               [12]  198 	orl	a,r6
+      000054 60 0E            [24]  199 	jz	00103$
+      000056 74 02            [12]  200 	mov	a,#0x02
+      000058 2E               [12]  201 	add	a,r6
+      000059 FC               [12]  202 	mov	r4,a
+      00005A E4               [12]  203 	clr	a
+      00005B 3F               [12]  204 	addc	a,r7
+      00005C FD               [12]  205 	mov	r5,a
+      00005D C3               [12]  206 	clr	c
+      00005E EC               [12]  207 	mov	a,r4
+      00005F 9E               [12]  208 	subb	a,r6
+      000060 ED               [12]  209 	mov	a,r5
+      000061 9F               [12]  210 	subb	a,r7
+      000062 50 04            [24]  211 	jnc	00104$
+      000064                        212 00103$:
+                                    213 ;	malloc.c:81: return(0);
+      000064 90 00 00         [24]  214 	mov	dptr,#0x0000
+      000067 22               [24]  215 	ret
+      000068                        216 00104$:
+                                    217 ;	malloc.c:82: size += offsetof(struct header, next_free);
+      000068 90r00r04         [24]  218 	mov	dptr,#_malloc_size_1_23
+      00006B 74 02            [12]  219 	mov	a,#0x02
+      00006D 2E               [12]  220 	add	a,r6
+      00006E F0               [24]  221 	movx	@dptr,a
+      00006F E4               [12]  222 	clr	a
+      000070 3F               [12]  223 	addc	a,r7
+      000071 A3               [24]  224 	inc	dptr
+      000072 F0               [24]  225 	movx	@dptr,a
+                                    226 ;	malloc.c:83: if(size < sizeof(struct header)) // Requiring a minimum size makes it easier to implement free(), and avoid memory leaks.
+      000073 90r00r04         [24]  227 	mov	dptr,#_malloc_size_1_23
+      000076 E0               [24]  228 	movx	a,@dptr
+      000077 FE               [12]  229 	mov	r6,a
+      000078 A3               [24]  230 	inc	dptr
+      000079 E0               [24]  231 	movx	a,@dptr
+      00007A FF               [12]  232 	mov	r7,a
+      00007B C3               [12]  233 	clr	c
+      00007C EE               [12]  234 	mov	a,r6
+      00007D 94 04            [12]  235 	subb	a,#0x04
+      00007F EF               [12]  236 	mov	a,r7
+      000080 94 00            [12]  237 	subb	a,#0x00
+      000082 50 09            [24]  238 	jnc	00107$
+                                    239 ;	malloc.c:84: size = sizeof(struct header);
+      000084 90r00r04         [24]  240 	mov	dptr,#_malloc_size_1_23
+      000087 74 04            [12]  241 	mov	a,#0x04
+      000089 F0               [24]  242 	movx	@dptr,a
+      00008A E4               [12]  243 	clr	a
+      00008B A3               [24]  244 	inc	dptr
+      00008C F0               [24]  245 	movx	@dptr,a
+      00008D                        246 00107$:
+                                    247 ;	malloc.c:86: for(h = __sdcc_heap_free, f = &__sdcc_heap_free; h; f = &(h->next_free), h = h->next_free)
+      00008D 90r00r02         [24]  248 	mov	dptr,#___sdcc_heap_free
+      000090 E0               [24]  249 	movx	a,@dptr
+      000091 FE               [12]  250 	mov	r6,a
+      000092 A3               [24]  251 	inc	dptr
+      000093 E0               [24]  252 	movx	a,@dptr
+      000094 FF               [12]  253 	mov	r7,a
+      000095 90r00r06         [24]  254 	mov	dptr,#_malloc_h_1_24
+      000098 EE               [12]  255 	mov	a,r6
+      000099 F0               [24]  256 	movx	@dptr,a
+      00009A EF               [12]  257 	mov	a,r7
+      00009B A3               [24]  258 	inc	dptr
+      00009C F0               [24]  259 	movx	@dptr,a
+      00009D 90r00r08         [24]  260 	mov	dptr,#_malloc_f_1_24
+      0000A0 74r02            [12]  261 	mov	a,#___sdcc_heap_free
+      0000A2 F0               [24]  262 	movx	@dptr,a
+      0000A3 74s00            [12]  263 	mov	a,#(___sdcc_heap_free >> 8)
+      0000A5 A3               [24]  264 	inc	dptr
+      0000A6 F0               [24]  265 	movx	@dptr,a
+      0000A7                        266 00115$:
+      0000A7 90r00r06         [24]  267 	mov	dptr,#_malloc_h_1_24
+      0000AA E0               [24]  268 	movx	a,@dptr
+      0000AB FE               [12]  269 	mov	r6,a
+      0000AC A3               [24]  270 	inc	dptr
+      0000AD E0               [24]  271 	movx	a,@dptr
+      0000AE FF               [12]  272 	mov	r7,a
+      0000AF 4E               [12]  273 	orl	a,r6
+      0000B0 70 03            [24]  274 	jnz	00144$
+      0000B2 02r01r96         [24]  275 	ljmp	00113$
+      0000B5                        276 00144$:
+                                    277 ;	malloc.c:88: size_t blocksize = (char XDATA *)(h->next) - (char XDATA *)h;
+      0000B5 8E 82            [24]  278 	mov	dpl,r6
+      0000B7 8F 83            [24]  279 	mov	dph,r7
+      0000B9 E0               [24]  280 	movx	a,@dptr
+      0000BA FC               [12]  281 	mov	r4,a
+      0000BB A3               [24]  282 	inc	dptr
+      0000BC E0               [24]  283 	movx	a,@dptr
+      0000BD FD               [12]  284 	mov	r5,a
+      0000BE 8C 02            [24]  285 	mov	ar2,r4
+      0000C0 8D 03            [24]  286 	mov	ar3,r5
+      0000C2 8E 00            [24]  287 	mov	ar0,r6
+      0000C4 8F 01            [24]  288 	mov	ar1,r7
+      0000C6 EA               [12]  289 	mov	a,r2
+      0000C7 C3               [12]  290 	clr	c
+      0000C8 98               [12]  291 	subb	a,r0
+      0000C9 FA               [12]  292 	mov	r2,a
+      0000CA EB               [12]  293 	mov	a,r3
+      0000CB 99               [12]  294 	subb	a,r1
+      0000CC FB               [12]  295 	mov	r3,a
+                                    296 ;	malloc.c:89: if(blocksize >= size) // Found free block of sufficient size.
+      0000CD 8A 00            [24]  297 	mov	ar0,r2
+      0000CF 8B 01            [24]  298 	mov	ar1,r3
+      0000D1 90r00r04         [24]  299 	mov	dptr,#_malloc_size_1_23
+      0000D4 E0               [24]  300 	movx	a,@dptr
+      0000D5 F5*00            [12]  301 	mov	_malloc_sloc0_1_0,a
+      0000D7 A3               [24]  302 	inc	dptr
+      0000D8 E0               [24]  303 	movx	a,@dptr
+      0000D9 F5*01            [12]  304 	mov	(_malloc_sloc0_1_0 + 1),a
+      0000DB C3               [12]  305 	clr	c
+      0000DC E8               [12]  306 	mov	a,r0
+      0000DD 95*00            [12]  307 	subb	a,_malloc_sloc0_1_0
+      0000DF E9               [12]  308 	mov	a,r1
+      0000E0 95*01            [12]  309 	subb	a,(_malloc_sloc0_1_0 + 1)
+      0000E2 50 03            [24]  310 	jnc	00145$
+      0000E4 02r01r73         [24]  311 	ljmp	00116$
+      0000E7                        312 00145$:
+                                    313 ;	malloc.c:91: if(blocksize >= size + sizeof(struct header)) // It is worth creating a new free block
+      0000E7 74 04            [12]  314 	mov	a,#0x04
+      0000E9 25*00            [12]  315 	add	a,_malloc_sloc0_1_0
+      0000EB F8               [12]  316 	mov	r0,a
+      0000EC E4               [12]  317 	clr	a
+      0000ED 35*01            [12]  318 	addc	a,(_malloc_sloc0_1_0 + 1)
+      0000EF F9               [12]  319 	mov	r1,a
+      0000F0 C3               [12]  320 	clr	c
+      0000F1 EA               [12]  321 	mov	a,r2
+      0000F2 98               [12]  322 	subb	a,r0
+      0000F3 EB               [12]  323 	mov	a,r3
+      0000F4 99               [12]  324 	subb	a,r1
+      0000F5 40 4C            [24]  325 	jc	00109$
+                                    326 ;	malloc.c:93: header_t *const newheader = (header_t *const)((char XDATA*)h + size);
+      0000F7 8E 02            [24]  327 	mov	ar2,r6
+      0000F9 8F 03            [24]  328 	mov	ar3,r7
+      0000FB E5*00            [12]  329 	mov	a,_malloc_sloc0_1_0
+      0000FD 2A               [12]  330 	add	a,r2
+      0000FE FA               [12]  331 	mov	r2,a
+      0000FF E5*01            [12]  332 	mov	a,(_malloc_sloc0_1_0 + 1)
+      000101 3B               [12]  333 	addc	a,r3
+      000102 FB               [12]  334 	mov	r3,a
+                                    335 ;	malloc.c:94: newheader->next = h->next;
+      000103 8A 82            [24]  336 	mov	dpl,r2
+      000105 8B 83            [24]  337 	mov	dph,r3
+      000107 EC               [12]  338 	mov	a,r4
+      000108 F0               [24]  339 	movx	@dptr,a
+      000109 ED               [12]  340 	mov	a,r5
+      00010A A3               [24]  341 	inc	dptr
+      00010B F0               [24]  342 	movx	@dptr,a
+                                    343 ;	malloc.c:95: newheader->next_free = h->next_free;
+      00010C 74 02            [12]  344 	mov	a,#0x02
+      00010E 2A               [12]  345 	add	a,r2
+      00010F FC               [12]  346 	mov	r4,a
+      000110 E4               [12]  347 	clr	a
+      000111 3B               [12]  348 	addc	a,r3
+      000112 FD               [12]  349 	mov	r5,a
+      000113 8E 82            [24]  350 	mov	dpl,r6
+      000115 8F 83            [24]  351 	mov	dph,r7
+      000117 A3               [24]  352 	inc	dptr
+      000118 A3               [24]  353 	inc	dptr
+      000119 E0               [24]  354 	movx	a,@dptr
+      00011A F8               [12]  355 	mov	r0,a
+      00011B A3               [24]  356 	inc	dptr
+      00011C E0               [24]  357 	movx	a,@dptr
+      00011D F9               [12]  358 	mov	r1,a
+      00011E 8C 82            [24]  359 	mov	dpl,r4
+      000120 8D 83            [24]  360 	mov	dph,r5
+      000122 E8               [12]  361 	mov	a,r0
+      000123 F0               [24]  362 	movx	@dptr,a
+      000124 E9               [12]  363 	mov	a,r1
+      000125 A3               [24]  364 	inc	dptr
+      000126 F0               [24]  365 	movx	@dptr,a
+                                    366 ;	malloc.c:96: *f = newheader;
+      000127 90r00r08         [24]  367 	mov	dptr,#_malloc_f_1_24
+      00012A E0               [24]  368 	movx	a,@dptr
+      00012B FC               [12]  369 	mov	r4,a
+      00012C A3               [24]  370 	inc	dptr
+      00012D E0               [24]  371 	movx	a,@dptr
+      00012E FD               [12]  372 	mov	r5,a
+      00012F 8C 82            [24]  373 	mov	dpl,r4
+      000131 8D 83            [24]  374 	mov	dph,r5
+      000133 EA               [12]  375 	mov	a,r2
+      000134 F0               [24]  376 	movx	@dptr,a
+      000135 EB               [12]  377 	mov	a,r3
+      000136 A3               [24]  378 	inc	dptr
+      000137 F0               [24]  379 	movx	@dptr,a
+                                    380 ;	malloc.c:97: h->next = newheader;
+      000138 8E 82            [24]  381 	mov	dpl,r6
+      00013A 8F 83            [24]  382 	mov	dph,r7
+      00013C EA               [12]  383 	mov	a,r2
+      00013D F0               [24]  384 	movx	@dptr,a
+      00013E EB               [12]  385 	mov	a,r3
+      00013F A3               [24]  386 	inc	dptr
+      000140 F0               [24]  387 	movx	@dptr,a
+      000141 80 1C            [24]  388 	sjmp	00110$
+      000143                        389 00109$:
+                                    390 ;	malloc.c:100: *f = h->next_free;
+      000143 90r00r08         [24]  391 	mov	dptr,#_malloc_f_1_24
+      000146 E0               [24]  392 	movx	a,@dptr
+      000147 FC               [12]  393 	mov	r4,a
+      000148 A3               [24]  394 	inc	dptr
+      000149 E0               [24]  395 	movx	a,@dptr
+      00014A FD               [12]  396 	mov	r5,a
+      00014B 8E 82            [24]  397 	mov	dpl,r6
+      00014D 8F 83            [24]  398 	mov	dph,r7
+      00014F A3               [24]  399 	inc	dptr
+      000150 A3               [24]  400 	inc	dptr
+      000151 E0               [24]  401 	movx	a,@dptr
+      000152 FA               [12]  402 	mov	r2,a
+      000153 A3               [24]  403 	inc	dptr
+      000154 E0               [24]  404 	movx	a,@dptr
+      000155 FB               [12]  405 	mov	r3,a
+      000156 8C 82            [24]  406 	mov	dpl,r4
+      000158 8D 83            [24]  407 	mov	dph,r5
+      00015A EA               [12]  408 	mov	a,r2
+      00015B F0               [24]  409 	movx	@dptr,a
+      00015C EB               [12]  410 	mov	a,r3
+      00015D A3               [24]  411 	inc	dptr
+      00015E F0               [24]  412 	movx	@dptr,a
+      00015F                        413 00110$:
+                                    414 ;	malloc.c:102: return(&(h->next_free));
+      00015F 90r00r06         [24]  415 	mov	dptr,#_malloc_h_1_24
+      000162 E0               [24]  416 	movx	a,@dptr
+      000163 FC               [12]  417 	mov	r4,a
+      000164 A3               [24]  418 	inc	dptr
+      000165 E0               [24]  419 	movx	a,@dptr
+      000166 FD               [12]  420 	mov	r5,a
+      000167 74 02            [12]  421 	mov	a,#0x02
+      000169 2C               [12]  422 	add	a,r4
+      00016A FC               [12]  423 	mov	r4,a
+      00016B E4               [12]  424 	clr	a
+      00016C 3D               [12]  425 	addc	a,r5
+      00016D FD               [12]  426 	mov	r5,a
+      00016E 8C 82            [24]  427 	mov	dpl,r4
+      000170 8D 83            [24]  428 	mov	dph,r5
+      000172 22               [24]  429 	ret
+      000173                        430 00116$:
+                                    431 ;	malloc.c:86: for(h = __sdcc_heap_free, f = &__sdcc_heap_free; h; f = &(h->next_free), h = h->next_free)
+      000173 74 02            [12]  432 	mov	a,#0x02
+      000175 2E               [12]  433 	add	a,r6
+      000176 FE               [12]  434 	mov	r6,a
+      000177 E4               [12]  435 	clr	a
+      000178 3F               [12]  436 	addc	a,r7
+      000179 FF               [12]  437 	mov	r7,a
+      00017A 90r00r08         [24]  438 	mov	dptr,#_malloc_f_1_24
+      00017D EE               [12]  439 	mov	a,r6
+      00017E F0               [24]  440 	movx	@dptr,a
+      00017F EF               [12]  441 	mov	a,r7
+      000180 A3               [24]  442 	inc	dptr
+      000181 F0               [24]  443 	movx	@dptr,a
+      000182 8E 82            [24]  444 	mov	dpl,r6
+      000184 8F 83            [24]  445 	mov	dph,r7
+      000186 E0               [24]  446 	movx	a,@dptr
+      000187 FE               [12]  447 	mov	r6,a
+      000188 A3               [24]  448 	inc	dptr
+      000189 E0               [24]  449 	movx	a,@dptr
+      00018A FF               [12]  450 	mov	r7,a
+      00018B 90r00r06         [24]  451 	mov	dptr,#_malloc_h_1_24
+      00018E EE               [12]  452 	mov	a,r6
+      00018F F0               [24]  453 	movx	@dptr,a
+      000190 EF               [12]  454 	mov	a,r7
+      000191 A3               [24]  455 	inc	dptr
+      000192 F0               [24]  456 	movx	@dptr,a
+      000193 02r00rA7         [24]  457 	ljmp	00115$
+      000196                        458 00113$:
+                                    459 ;	malloc.c:106: return(0);
+      000196 90 00 00         [24]  460 	mov	dptr,#0x0000
+      000199 22               [24]  461 	ret
+                                    462 	.area CSEG    (CODE)
+                                    463 	.area CONST   (CODE)
+                                    464 	.area XINIT   (CODE)
+                                    465 	.area CABS    (ABS,CODE)

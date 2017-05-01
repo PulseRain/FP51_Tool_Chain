@@ -1,0 +1,236 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.6.3 #9771 (MSVC)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module _strcspn
+                                      6 	.optsdcc -mmcs51 --model-large --xstack
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _strchr
+                                     12 	.globl _strcspn_PARM_2
+                                     13 	.globl _strcspn
+                                     14 ;--------------------------------------------------------
+                                     15 ; special function registers
+                                     16 ;--------------------------------------------------------
+                                     17 	.area RSEG    (ABS,DATA)
+      000000                         18 	.org 0x0000
+                                     19 ;--------------------------------------------------------
+                                     20 ; special function bits
+                                     21 ;--------------------------------------------------------
+                                     22 	.area RSEG    (ABS,DATA)
+      000000                         23 	.org 0x0000
+                                     24 ;--------------------------------------------------------
+                                     25 ; overlayable register banks
+                                     26 ;--------------------------------------------------------
+                                     27 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         28 	.ds 8
+                                     29 ;--------------------------------------------------------
+                                     30 ; internal ram data
+                                     31 ;--------------------------------------------------------
+                                     32 	.area DSEG    (DATA)
+      000000                         33 _strcspn_count_1_22:
+      000000                         34 	.ds 2
+                                     35 ;--------------------------------------------------------
+                                     36 ; overlayable items in internal ram 
+                                     37 ;--------------------------------------------------------
+                                     38 ;--------------------------------------------------------
+                                     39 ; indirectly addressable internal ram data
+                                     40 ;--------------------------------------------------------
+                                     41 	.area ISEG    (DATA)
+                                     42 ;--------------------------------------------------------
+                                     43 ; absolute internal ram data
+                                     44 ;--------------------------------------------------------
+                                     45 	.area IABS    (ABS,DATA)
+                                     46 	.area IABS    (ABS,DATA)
+                                     47 ;--------------------------------------------------------
+                                     48 ; bit data
+                                     49 ;--------------------------------------------------------
+                                     50 	.area BSEG    (BIT)
+                                     51 ;--------------------------------------------------------
+                                     52 ; paged external ram data
+                                     53 ;--------------------------------------------------------
+                                     54 	.area PSEG    (PAG,XDATA)
+                                     55 ;--------------------------------------------------------
+                                     56 ; external ram data
+                                     57 ;--------------------------------------------------------
+                                     58 	.area XSEG    (XDATA)
+      000000                         59 _strcspn_PARM_2:
+      000000                         60 	.ds 3
+      000003                         61 _strcspn_string_1_21:
+      000003                         62 	.ds 3
+                                     63 ;--------------------------------------------------------
+                                     64 ; absolute external ram data
+                                     65 ;--------------------------------------------------------
+                                     66 	.area XABS    (ABS,XDATA)
+                                     67 ;--------------------------------------------------------
+                                     68 ; external initialized ram data
+                                     69 ;--------------------------------------------------------
+                                     70 	.area XISEG   (XDATA)
+                                     71 	.area HOME    (CODE)
+                                     72 	.area GSINIT0 (CODE)
+                                     73 	.area GSINIT1 (CODE)
+                                     74 	.area GSINIT2 (CODE)
+                                     75 	.area GSINIT3 (CODE)
+                                     76 	.area GSINIT4 (CODE)
+                                     77 	.area GSINIT5 (CODE)
+                                     78 	.area GSINIT  (CODE)
+                                     79 	.area GSFINAL (CODE)
+                                     80 	.area CSEG    (CODE)
+                                     81 ;--------------------------------------------------------
+                                     82 ; global & static initialisations
+                                     83 ;--------------------------------------------------------
+                                     84 	.area HOME    (CODE)
+                                     85 	.area GSINIT  (CODE)
+                                     86 	.area GSFINAL (CODE)
+                                     87 	.area GSINIT  (CODE)
+                                     88 ;--------------------------------------------------------
+                                     89 ; Home
+                                     90 ;--------------------------------------------------------
+                                     91 	.area HOME    (CODE)
+                                     92 	.area HOME    (CODE)
+                                     93 ;--------------------------------------------------------
+                                     94 ; code
+                                     95 ;--------------------------------------------------------
+                                     96 	.area CSEG    (CODE)
+                                     97 ;------------------------------------------------------------
+                                     98 ;Allocation info for local variables in function 'strcspn'
+                                     99 ;------------------------------------------------------------
+                                    100 ;count                     Allocated with name '_strcspn_count_1_22'
+                                    101 ;ch                        Allocated to registers r1 
+                                    102 ;control                   Allocated with name '_strcspn_PARM_2'
+                                    103 ;string                    Allocated with name '_strcspn_string_1_21'
+                                    104 ;------------------------------------------------------------
+                                    105 ;	_strcspn.c:31: size_t strcspn ( const char * string, const char * control )
+                                    106 ;	-----------------------------------------
+                                    107 ;	 function strcspn
+                                    108 ;	-----------------------------------------
+      000000                        109 _strcspn:
+                           000007   110 	ar7 = 0x07
+                           000006   111 	ar6 = 0x06
+                           000005   112 	ar5 = 0x05
+                           000004   113 	ar4 = 0x04
+                           000003   114 	ar3 = 0x03
+                           000002   115 	ar2 = 0x02
+                           000001   116 	ar1 = 0x01
+                           000000   117 	ar0 = 0x00
+      000000 AF F0            [24]  118 	mov	r7,b
+      000002 AE 83            [24]  119 	mov	r6,dph
+      000004 E5 82            [12]  120 	mov	a,dpl
+      000006 90r00r03         [24]  121 	mov	dptr,#_strcspn_string_1_21
+      000009 F0               [24]  122 	movx	@dptr,a
+      00000A EE               [12]  123 	mov	a,r6
+      00000B A3               [24]  124 	inc	dptr
+      00000C F0               [24]  125 	movx	@dptr,a
+      00000D EF               [12]  126 	mov	a,r7
+      00000E A3               [24]  127 	inc	dptr
+      00000F F0               [24]  128 	movx	@dptr,a
+                                    129 ;	_strcspn.c:36: while (ch = *string) {
+      000010 E4               [12]  130 	clr	a
+      000011 F5*00            [12]  131 	mov	_strcspn_count_1_22,a
+      000013 F5*01            [12]  132 	mov	(_strcspn_count_1_22 + 1),a
+      000015 90r00r03         [24]  133 	mov	dptr,#_strcspn_string_1_21
+      000018 E0               [24]  134 	movx	a,@dptr
+      000019 FB               [12]  135 	mov	r3,a
+      00001A A3               [24]  136 	inc	dptr
+      00001B E0               [24]  137 	movx	a,@dptr
+      00001C FC               [12]  138 	mov	r4,a
+      00001D A3               [24]  139 	inc	dptr
+      00001E E0               [24]  140 	movx	a,@dptr
+      00001F FD               [12]  141 	mov	r5,a
+      000020                        142 00104$:
+      000020 8B 82            [24]  143 	mov	dpl,r3
+      000022 8C 83            [24]  144 	mov	dph,r4
+      000024 8D F0            [24]  145 	mov	b,r5
+      000026 12r00r00         [24]  146 	lcall	__gptrget
+      000029 FA               [12]  147 	mov	r2,a
+      00002A F9               [12]  148 	mov	r1,a
+      00002B 60 5D            [24]  149 	jz	00112$
+                                    150 ;	_strcspn.c:37: if (strchr(control,ch))
+      00002D 90r00r00         [24]  151 	mov	dptr,#_strcspn_PARM_2
+      000030 E0               [24]  152 	movx	a,@dptr
+      000031 F8               [12]  153 	mov	r0,a
+      000032 A3               [24]  154 	inc	dptr
+      000033 E0               [24]  155 	movx	a,@dptr
+      000034 FA               [12]  156 	mov	r2,a
+      000035 A3               [24]  157 	inc	dptr
+      000036 E0               [24]  158 	movx	a,@dptr
+      000037 FF               [12]  159 	mov	r7,a
+      000038 90r00r00         [24]  160 	mov	dptr,#_strchr_PARM_2
+      00003B E9               [12]  161 	mov	a,r1
+      00003C F0               [24]  162 	movx	@dptr,a
+      00003D C0 00            [24]  163 	push	ar0
+      00003F E5*00            [12]  164 	mov	a,_spx
+      000041 F8               [12]  165 	mov	r0,a
+      000042 24 03            [12]  166 	add	a,#0x03
+      000044 F5*00            [12]  167 	mov	_spx,a
+      000046 ED               [12]  168 	mov	a,r5
+      000047 F2               [24]  169 	movx	@r0,a
+      000048 08               [12]  170 	inc	r0
+      000049 EC               [12]  171 	mov	a,r4
+      00004A F2               [24]  172 	movx	@r0,a
+      00004B 08               [12]  173 	inc	r0
+      00004C EB               [12]  174 	mov	a,r3
+      00004D F2               [24]  175 	movx	@r0,a
+      00004E D0 00            [24]  176 	pop	ar0
+      000050 88 82            [24]  177 	mov	dpl,r0
+      000052 8A 83            [24]  178 	mov	dph,r2
+      000054 8F F0            [24]  179 	mov	b,r7
+      000056 12r00r00         [24]  180 	lcall	_strchr
+      000059 AA 82            [24]  181 	mov	r2,dpl
+      00005B AE 83            [24]  182 	mov	r6,dph
+      00005D AF F0            [24]  183 	mov	r7,b
+      00005F A8*00            [24]  184 	mov	r0,_spx
+      000061 18               [12]  185 	dec	r0
+      000062 E2               [24]  186 	movx	a,@r0
+      000063 FB               [12]  187 	mov	r3,a
+      000064 18               [12]  188 	dec	r0
+      000065 E2               [24]  189 	movx	a,@r0
+      000066 FC               [12]  190 	mov	r4,a
+      000067 18               [12]  191 	dec	r0
+      000068 E2               [24]  192 	movx	a,@r0
+      000069 FD               [12]  193 	mov	r5,a
+      00006A 88*00            [24]  194 	mov	_spx,r0
+      00006C EA               [12]  195 	mov	a,r2
+      00006D 4E               [12]  196 	orl	a,r6
+      00006E 70 1A            [24]  197 	jnz	00112$
+                                    198 ;	_strcspn.c:40: count++;
+      000070 05*00            [12]  199 	inc	_strcspn_count_1_22
+      000072 E4               [12]  200 	clr	a
+      000073 B5*00 02         [24]  201 	cjne	a,_strcspn_count_1_22,00121$
+      000076 05*01            [12]  202 	inc	(_strcspn_count_1_22 + 1)
+      000078                        203 00121$:
+                                    204 ;	_strcspn.c:41: string++;
+      000078 0B               [12]  205 	inc	r3
+      000079 BB 00 01         [24]  206 	cjne	r3,#0x00,00122$
+      00007C 0C               [12]  207 	inc	r4
+      00007D                        208 00122$:
+      00007D 90r00r03         [24]  209 	mov	dptr,#_strcspn_string_1_21
+      000080 EB               [12]  210 	mov	a,r3
+      000081 F0               [24]  211 	movx	@dptr,a
+      000082 EC               [12]  212 	mov	a,r4
+      000083 A3               [24]  213 	inc	dptr
+      000084 F0               [24]  214 	movx	@dptr,a
+      000085 ED               [12]  215 	mov	a,r5
+      000086 A3               [24]  216 	inc	dptr
+      000087 F0               [24]  217 	movx	@dptr,a
+      000088 80 96            [24]  218 	sjmp	00104$
+      00008A                        219 00112$:
+      00008A 90r00r03         [24]  220 	mov	dptr,#_strcspn_string_1_21
+      00008D EB               [12]  221 	mov	a,r3
+      00008E F0               [24]  222 	movx	@dptr,a
+      00008F EC               [12]  223 	mov	a,r4
+      000090 A3               [24]  224 	inc	dptr
+      000091 F0               [24]  225 	movx	@dptr,a
+      000092 ED               [12]  226 	mov	a,r5
+      000093 A3               [24]  227 	inc	dptr
+      000094 F0               [24]  228 	movx	@dptr,a
+                                    229 ;	_strcspn.c:44: return count;
+      000095 85*00 82         [24]  230 	mov	dpl,_strcspn_count_1_22
+      000098 85*01 83         [24]  231 	mov	dph,(_strcspn_count_1_22 + 1)
+      00009B 22               [24]  232 	ret
+                                    233 	.area CSEG    (CODE)
+                                    234 	.area CONST   (CODE)
+                                    235 	.area XINIT   (CODE)
+                                    236 	.area CABS    (ABS,CODE)

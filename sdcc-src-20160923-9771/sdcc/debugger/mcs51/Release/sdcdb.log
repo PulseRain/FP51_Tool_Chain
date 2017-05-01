@@ -1,0 +1,13 @@
+﻿  break.c
+  cmd.c
+  NewAlloc.c
+  SDCCerr.c
+  SDCChasht.c
+  SDCCset.c
+  sdcdb.c
+  simi.c
+  symtab.c
+  Generating code
+  All 204 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  sdcdb.vcxproj -> C:\arc\Arduino_IDE\sdcc-src-20160923-9771\sdcc\debugger\mcs51\..\..\bin_vc\sdcdb.exe

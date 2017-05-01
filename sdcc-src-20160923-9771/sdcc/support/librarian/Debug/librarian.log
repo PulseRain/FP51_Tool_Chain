@@ -1,0 +1,3 @@
+﻿  sdcclib.c
+sdcclib.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  librarian.vcxproj -> C:\temp\sdcc-src-20160923-9771\sdcc\support\librarian\..\..\bin_vc\sdcclib.exe

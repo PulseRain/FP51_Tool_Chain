@@ -1,0 +1,52 @@
+﻿  Generating: auto-host.h
+  Generating: options.c and options.h
+  dirent.c
+c:\temp\sdcc-src-20160923-9771\sdcc\support\cpp\win32\dirent.c(212): warning C4267: '=': conversion from 'size_t' to 'unsigned short', possible loss of data
+  traditional.c
+  symtab.c
+  mkdeps.c
+  macro.c
+  line-map.c
+  lex.c
+c:\temp\sdcc-src-20160923-9771\sdcc\support\cpp\libcpp\lex.c(244): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+  init.c
+  identifiers.c
+  files.c
+  expr.c
+  errors.c
+  directives.c
+  charset.c
+  version.c
+  sdcpp.c
+  sdcpp-opts.c
+  sdcpp-diagnostic.c
+  prefix.c
+  opts.c
+  Generating Code...
+  Compiling...
+  opts-common.c
+  options.c
+  cppdefault.c
+  c-ppoutput.c
+  c-incpath.c
+  xstrerror.c
+  xstrdup.c
+  xmemdup.c
+  xmalloc.c
+  xexit.c
+  vasprintf.c
+  safe-ctype.c
+  obstack.c
+  md5.c
+  lbasename.c
+  hex.c
+  hashtab.c
+  getpwd.c
+  fopen_unlocked.c
+  concat.c
+  Generating Code...
+  Compiling...
+  alloca.c
+  Generating Code...
+alloca.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  sdcpp.vcxproj -> C:\temp\sdcc-src-20160923-9771\sdcc\support\cpp\..\..\bin_vc\sdcpp.exe

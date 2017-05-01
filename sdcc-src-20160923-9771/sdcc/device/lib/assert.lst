@@ -1,0 +1,208 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.6.3 #9771 (MSVC)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module assert
+                                      6 	.optsdcc -mmcs51 --model-large --xstack
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl __assert
+                                     12 	.globl _printf
+                                     13 	.globl __assert_PARM_3
+                                     14 	.globl __assert_PARM_2
+                                     15 	.globl _aligned_alloc_PARM_2
+                                     16 ;--------------------------------------------------------
+                                     17 ; special function registers
+                                     18 ;--------------------------------------------------------
+                                     19 	.area RSEG    (ABS,DATA)
+      000000                         20 	.org 0x0000
+                                     21 ;--------------------------------------------------------
+                                     22 ; special function bits
+                                     23 ;--------------------------------------------------------
+                                     24 	.area RSEG    (ABS,DATA)
+      000000                         25 	.org 0x0000
+                                     26 ;--------------------------------------------------------
+                                     27 ; overlayable register banks
+                                     28 ;--------------------------------------------------------
+                                     29 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         30 	.ds 8
+                                     31 ;--------------------------------------------------------
+                                     32 ; internal ram data
+                                     33 ;--------------------------------------------------------
+                                     34 	.area DSEG    (DATA)
+                                     35 ;--------------------------------------------------------
+                                     36 ; overlayable items in internal ram 
+                                     37 ;--------------------------------------------------------
+                                     38 ;--------------------------------------------------------
+                                     39 ; indirectly addressable internal ram data
+                                     40 ;--------------------------------------------------------
+                                     41 	.area ISEG    (DATA)
+                                     42 ;--------------------------------------------------------
+                                     43 ; absolute internal ram data
+                                     44 ;--------------------------------------------------------
+                                     45 	.area IABS    (ABS,DATA)
+                                     46 	.area IABS    (ABS,DATA)
+                                     47 ;--------------------------------------------------------
+                                     48 ; bit data
+                                     49 ;--------------------------------------------------------
+                                     50 	.area BSEG    (BIT)
+                                     51 ;--------------------------------------------------------
+                                     52 ; paged external ram data
+                                     53 ;--------------------------------------------------------
+                                     54 	.area PSEG    (PAG,XDATA)
+                                     55 ;--------------------------------------------------------
+                                     56 ; external ram data
+                                     57 ;--------------------------------------------------------
+                                     58 	.area XSEG    (XDATA)
+      000000                         59 _aligned_alloc_PARM_2:
+      000000                         60 	.ds 2
+      000002                         61 __assert_PARM_2:
+      000002                         62 	.ds 3
+      000005                         63 __assert_PARM_3:
+      000005                         64 	.ds 2
+      000007                         65 __assert_expr_1_31:
+      000007                         66 	.ds 3
+                                     67 ;--------------------------------------------------------
+                                     68 ; absolute external ram data
+                                     69 ;--------------------------------------------------------
+                                     70 	.area XABS    (ABS,XDATA)
+                                     71 ;--------------------------------------------------------
+                                     72 ; external initialized ram data
+                                     73 ;--------------------------------------------------------
+                                     74 	.area XISEG   (XDATA)
+                                     75 	.area HOME    (CODE)
+                                     76 	.area GSINIT0 (CODE)
+                                     77 	.area GSINIT1 (CODE)
+                                     78 	.area GSINIT2 (CODE)
+                                     79 	.area GSINIT3 (CODE)
+                                     80 	.area GSINIT4 (CODE)
+                                     81 	.area GSINIT5 (CODE)
+                                     82 	.area GSINIT  (CODE)
+                                     83 	.area GSFINAL (CODE)
+                                     84 	.area CSEG    (CODE)
+                                     85 ;--------------------------------------------------------
+                                     86 ; global & static initialisations
+                                     87 ;--------------------------------------------------------
+                                     88 	.area HOME    (CODE)
+                                     89 	.area GSINIT  (CODE)
+                                     90 	.area GSFINAL (CODE)
+                                     91 	.area GSINIT  (CODE)
+                                     92 ;--------------------------------------------------------
+                                     93 ; Home
+                                     94 ;--------------------------------------------------------
+                                     95 	.area HOME    (CODE)
+                                     96 	.area HOME    (CODE)
+                                     97 ;--------------------------------------------------------
+                                     98 ; code
+                                     99 ;--------------------------------------------------------
+                                    100 	.area CSEG    (CODE)
+                                    101 ;------------------------------------------------------------
+                                    102 ;Allocation info for local variables in function '_assert'
+                                    103 ;------------------------------------------------------------
+                                    104 ;filename                  Allocated with name '__assert_PARM_2'
+                                    105 ;linenumber                Allocated with name '__assert_PARM_3'
+                                    106 ;expr                      Allocated with name '__assert_expr_1_31'
+                                    107 ;------------------------------------------------------------
+                                    108 ;	assert.c:32: void _assert(char *expr, const char *filename, unsigned int linenumber)
+                                    109 ;	-----------------------------------------
+                                    110 ;	 function _assert
+                                    111 ;	-----------------------------------------
+      000000                        112 __assert:
+                           000007   113 	ar7 = 0x07
+                           000006   114 	ar6 = 0x06
+                           000005   115 	ar5 = 0x05
+                           000004   116 	ar4 = 0x04
+                           000003   117 	ar3 = 0x03
+                           000002   118 	ar2 = 0x02
+                           000001   119 	ar1 = 0x01
+                           000000   120 	ar0 = 0x00
+      000000 AF F0            [24]  121 	mov	r7,b
+      000002 AE 83            [24]  122 	mov	r6,dph
+      000004 E5 82            [12]  123 	mov	a,dpl
+      000006 90r00r07         [24]  124 	mov	dptr,#__assert_expr_1_31
+      000009 F0               [24]  125 	movx	@dptr,a
+      00000A EE               [12]  126 	mov	a,r6
+      00000B A3               [24]  127 	inc	dptr
+      00000C F0               [24]  128 	movx	@dptr,a
+      00000D EF               [12]  129 	mov	a,r7
+      00000E A3               [24]  130 	inc	dptr
+      00000F F0               [24]  131 	movx	@dptr,a
+                                    132 ;	assert.c:34: printf("Assert(%s) failed at line %u in file %s.\n",
+      000010 90r00r02         [24]  133 	mov	dptr,#__assert_PARM_2
+      000013 E5*00            [12]  134 	mov	a,_spx
+      000015 F8               [12]  135 	mov	r0,a
+      000016 24 03            [12]  136 	add	a,#0x03
+      000018 F5*00            [12]  137 	mov	_spx,a
+      00001A E0               [24]  138 	movx	a,@dptr
+      00001B F2               [24]  139 	movx	@r0,a
+      00001C 08               [12]  140 	inc	r0
+      00001D A3               [24]  141 	inc	dptr
+      00001E E0               [24]  142 	movx	a,@dptr
+      00001F F2               [24]  143 	movx	@r0,a
+      000020 08               [12]  144 	inc	r0
+      000021 A3               [24]  145 	inc	dptr
+      000022 E0               [24]  146 	movx	a,@dptr
+      000023 F2               [24]  147 	movx	@r0,a
+      000024 08               [12]  148 	inc	r0
+      000025 90r00r05         [24]  149 	mov	dptr,#__assert_PARM_3
+      000028 A8*00            [24]  150 	mov	r0,_spx
+      00002A 05*00            [12]  151 	inc	_spx
+      00002C 05*00            [12]  152 	inc	_spx
+      00002E E0               [24]  153 	movx	a,@dptr
+      00002F F2               [24]  154 	movx	@r0,a
+      000030 08               [12]  155 	inc	r0
+      000031 A3               [24]  156 	inc	dptr
+      000032 E0               [24]  157 	movx	a,@dptr
+      000033 F2               [24]  158 	movx	@r0,a
+      000034 08               [12]  159 	inc	r0
+      000035 90r00r07         [24]  160 	mov	dptr,#__assert_expr_1_31
+      000038 E5*00            [12]  161 	mov	a,_spx
+      00003A F8               [12]  162 	mov	r0,a
+      00003B 24 03            [12]  163 	add	a,#0x03
+      00003D F5*00            [12]  164 	mov	_spx,a
+      00003F E0               [24]  165 	movx	a,@dptr
+      000040 F2               [24]  166 	movx	@r0,a
+      000041 08               [12]  167 	inc	r0
+      000042 A3               [24]  168 	inc	dptr
+      000043 E0               [24]  169 	movx	a,@dptr
+      000044 F2               [24]  170 	movx	@r0,a
+      000045 08               [12]  171 	inc	r0
+      000046 A3               [24]  172 	inc	dptr
+      000047 E0               [24]  173 	movx	a,@dptr
+      000048 F2               [24]  174 	movx	@r0,a
+      000049 08               [12]  175 	inc	r0
+      00004A E5*00            [12]  176 	mov	a,_spx
+      00004C F8               [12]  177 	mov	r0,a
+      00004D 24 03            [12]  178 	add	a,#0x03
+      00004F F5*00            [12]  179 	mov	_spx,a
+      000051 74r00            [12]  180 	mov	a,#___str_0
+      000053 F2               [24]  181 	movx	@r0,a
+      000054 08               [12]  182 	inc	r0
+      000055 74s00            [12]  183 	mov	a,#(___str_0 >> 8)
+      000057 F2               [24]  184 	movx	@r0,a
+      000058 08               [12]  185 	inc	r0
+      000059 74 80            [12]  186 	mov	a,#0x80
+      00005B F2               [24]  187 	movx	@r0,a
+      00005C 08               [12]  188 	inc	r0
+      00005D 12r00r00         [24]  189 	lcall	_printf
+      000060 E5*00            [12]  190 	mov	a,_spx
+      000062 24 F5            [12]  191 	add	a,#0xf5
+      000064 F5*00            [12]  192 	mov	_spx,a
+                                    193 ;	assert.c:36: while(1);
+      000066                        194 00102$:
+      000066 80 FE            [24]  195 	sjmp	00102$
+                                    196 	.area CSEG    (CODE)
+                                    197 	.area CONST   (CODE)
+      000000                        198 ___str_0:
+      000000 41 73 73 65 72 74 28   199 	.ascii "Assert(%s) failed at line %u in file %s."
+             25 73 29 20 66 61 69
+             6C 65 64 20 61 74 20
+             6C 69 6E 65 20 25 75
+             20 69 6E 20 66 69 6C
+             65 20 25 73 2E
+      000028 0A                     200 	.db 0x0a
+      000029 00                     201 	.db 0x00
+                                    202 	.area XINIT   (CODE)
+                                    203 	.area CABS    (ABS,CODE)
